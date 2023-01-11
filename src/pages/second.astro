@@ -1,0 +1,229 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Welcome to Astro.">
+	<main>
+		<h1>Welcome to <span class="text-gradient">Metro.js</span></h1>
+		
+		<a href="/"> go back to 1st PAGE</a>
+
+
+		<p class=" flex justify-center p-5 mt-16 text-2xl font-bold " id="itIsCurrently"> </p>
+        
+        <p class=" flex justify-center p-5 mt-10 text-2xl font-bold " id="metroCountDown"> </p>
+
+      
+
+		<p class=" mt-5 p-5 flex justify-center text-lg font-bold border-4 border-black hover:bg-slate-400" id="counter">Start Countdown</p>
+
+        
+
+          <select class=" mt-10 border border-black " id="mySelect" onchange="dropDown(this.value)">
+            <option value="">Select an option</option>
+            <option value="Luka, Černý Most">Luka, Černý Most</option>
+            <option value="Luka, Zličín">Luka, Zličín</option>
+            <option value="Jiřího z Poděbrad, Depo Hostivař">Jiřího z Poděbrad, Depo Hostivař</option>
+          </select>
+
+
+	</main>
+</Layout>
+
+
+<script type="text/javascript">
+
+/*
+ async function dropDown(value) {
+        // do something with the value passed to the function
+        if (value === "Luka, Černý Most"){
+        let dest = "'Luka'"+ ',' +" 'Černý Most'"
+
+        console.log(dest)
+        }
+    }
+ */  
+
+        async function getData(url) {
+    let result;
+  try {
+    const response = await fetch(url, {
+  headers: {
+    'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1sZW5nMDU1QGdtYWlsLmNvbSIsImlkIjoxNTg5LCJuYW1lIjpudWxsLCJzdXJuYW1lIjpudWxsLCJpYXQiOjE2NzE2MDMyMTMsImV4cCI6MTE2NzE2MDMyMTMsImlzcyI6ImdvbGVtaW8iLCJqdGkiOiI0YjE1NzU4ZS0yZGM1LTQxNzQtOWZhMS0zNTBmYjRhNTBjMTUifQ.HWF4mKWGmvJQuQTq8WQoBY7Wk-jbN3Vml3ZRyKMy_6g'
+  }
+});
+     result =  await response.json();
+   // console.log(result)
+  } catch (error) {
+    console.error(error);
+  }
+  return result;
+}
+
+
+let departurePassed = false;
+let interval;
+
+async function CountDownToZero(station, direction) {
+  const params = new URLSearchParams();
+  params.set('names', station);
+  params.set('includeMetroTrains','true')
+  const url = `https://api.golemio.cz/v2/pid/departureboards?${params}`;
+  console.log(url)
+  let data = await getData(url);
+  let departures = data.departures.filter(departure =>{return departure.trip.headsign === direction && departure.route.type === 1});
+  let departureTime = new Date(departures[0].departure_timestamp.scheduled);
+  let currentTime = new Date();
+  interval = departureTime - currentTime;
+  let minutes;
+  let seconds;
+  // interval counts down to zero
+  setInterval(() => {
+    interval -= 1000; // decrement interval by 1000 milliseconds (1 second)
+    if (interval <= 0) {
+        clearInterval();
+        departurePassed = true;
+    }
+    minutes = Math.floor(interval / 60000);
+    seconds = Math.floor(interval % 60000 / 1000);
+    document.getElementById('metroCountDown').innerHTML = minutes + ":" + seconds.toString().padStart(2, '0');
+  }, 1000);
+  
+  // refresh, recall function after 0
+  setTimeout(() => {
+    if(!departurePassed) {
+      CountDownToZero(station, direction);
+    }
+  }, interval);
+}
+CountDownToZero("Luka","Černý Most");
+
+
+ 
+
+// BELLOW LOGS THE CURRENT TIME 
+async function displayCzechTime() {
+  // Get the current date and time
+  var currentTime = new Date();
+  
+  // Set the time zone to Central European Time (CET)
+ // currentTime.setTime(currentTime.getTime());
+  
+  // Get the hours, minutes, and seconds from the current time
+  var hours = currentTime.getHours();
+  var minutes = currentTime.getMinutes();
+  var seconds = currentTime.getSeconds();
+  
+  // Add a leading zero to the hours, minutes, and seconds if they are less than 10
+  if (hours < 10) {
+    hours = "0" + hours;
+  }
+  if (minutes < 10) {
+    minutes = "0" + minutes;
+  }
+  if (seconds < 10) {
+    seconds = "0" + seconds;
+  }
+  
+  // Concatenate the hours, minutes, and seconds into a single string and display it
+  var timeString = hours + ":" + minutes + ":" + seconds;
+  console.log(timeString);
+
+  let timeRightNow = timeString
+
+
+document.getElementById('itIsCurrently').innerHTML = timeRightNow 
+}
+
+displayCzechTime();
+
+
+//       /              |\
+//      /            __ |/
+//     |  /    \  / |   |\
+//     / /   ^  \/  |-  | \
+//    / /__ / \ /   |__ |  \
+//   /         
+//  
+//  
+//
+// BELLOW TRIAL OF THE INITIAL TIME VALUE THAT WILL COUNT DOWN
+/*
+function grabingT() {
+
+    let whatTimeIsIt = timeString;
+    let nextTrain = counterr;
+
+    console.log('It is currently', whatTimeIsIt, 'and the next train arrives at', nextTrain)
+}
+grabingT()
+*/
+
+/* BELLOW PLAN
+
+ trigger getTimeMain by a dropdown menu
+
+
+
+ create the initial countdown value 
+ - grab departure time and subtract it by current time
+
+ put it in a function that counts it down till 0, REFRESHES to the next one and the returns a message 
+
+
+  */
+</script>
+ 
+
+
+<style>
+
+	.counter {
+		
+	}
+
+   
+
+	main {
+		margin: auto;
+		padding: 1.5rem;
+		max-width: 60ch;
+	}
+	h1 {
+		font-size: 2rem;
+		font-weight: 800;
+		margin: 0;
+	}
+	.text-gradient {
+		background-image: var(--accent-gradient);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-size: 400%;
+		background-position: 0%;
+	}
+	.instructions {
+		line-height: 1.6;
+		margin: 1rem 0;
+		border: 1px solid rgba(var(--accent), 25%);
+		background-color: white;
+		padding: 1rem;
+		border-radius: 0.4rem;
+	}
+	.instructions code {
+		font-size: 0.875em;
+		font-weight: bold;
+		background: rgba(var(--accent), 12%);
+		color: rgb(var(--accent));
+		border-radius: 4px;
+		padding: 0.3em 0.45em;
+	}
+	.instructions strong {
+		color: rgb(var(--accent));
+	}
+	.link-card-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+		gap: 1rem;
+		padding: 0;
+	}
+</style>

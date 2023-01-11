@@ -1,0 +1,33 @@
+---
+
+---
+
+<button class="timer border border-black p-5 bg-lime-400 hover:border-2"> Start Countdown </button>
+
+<div> <span class="minutes"> </span> <span class="seconds"> </span> </div>
+
+<script>
+function countDownFromRandomTime() {
+    const maxSeconds = 10 * 60; // 10 minutes in seconds
+    const randomSeconds = Math.floor(Math.random() * (maxSeconds + 1)); // Generate a random number of seconds up to 10 minutes
+    let time = randomSeconds; // Set the initial time to the random time
+    const timerElement = document.getElementById('timer'); // Get a reference to the timer element
+  
+    
+    // Use setInterval to count down from the initial time to zero
+    const interval = setInterval(function() {
+      const minutes = Math.floor(time / 60); // Convert seconds to minutes
+      const seconds = time % 60; // Get the remaining seconds
+     
+      timerElement.innerHTML = `<span class="minutes">${minutes}</span>:<span class="seconds">${seconds.toString().padStart(2, '0')}</span>`; // Update the timer element with the current time
+     
+      time--; // Decrement the time by 1 second
+      if (time < 0) { // If the time is less than zero, clear the interval
+        clearInterval(interval);
+      }
+    }, 1000); // The interval will run every 1000 milliseconds (1 second)
+   
+  }
+
+  countDownFromRandomTime()
+</script>

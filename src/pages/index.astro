@@ -1,0 +1,280 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Metro.js">
+	<main>
+		<h1>Welcome to <span class="text-gradient">Metro.js</span></h1>
+		
+		 
+
+		 <div class="mt-16"> current time: </div>
+
+		 <p class=" flex justify-center p-5 text-2xl font-bold " id="itIsCurrently">  </p>
+		
+		<div> next train:  </div>
+
+		<div class=" m-10 flex justify-center"><div class="mr-5"> from </div>  <div class=" font-bold text-lg" id="stationName"></div> <div class="mr-5 ml-5"> to </div>  <div class=" font-bold text-lg" id="stationDirection"></div> </div>
+		
+ 
+
+		<div> NEXT TRAIN LEAVES IN:  </div>
+
+		<p class=" flex justify-center p-5 mt-10 text-5xl font-bold " id="metroCountDown"> </p>
+
+		<!-- <p class=" mt-5 p-5 flex justify-center text-lg font-bold border-4 border-black hover:bg-slate-400" id="counter">Start Countdown (doesnt do anything)</p> --> 
+
+		
+
+		<select class=" mt-10 border border-black " id="mySelect" onchange="dropDown(this.value)" >
+		  <option selected>Select Destination</option>
+		  <option value="Luka, Černý Most">Luka, Černý Most</option>
+		  <option value="Luka, Zličín">Luka, Zličín</option>
+		  <option value="Jiřího z Poděbrad, Depo Hostivař">Jiřího z Poděbrad, Depo Hostivař</option>
+		  <option value="Jiřího z Poděbrad, Nemocnice Motol">Jiřího z Poděbrad, Nemocnice Motol</option>
+		</select>
+   
+	</main>
+</Layout>
+
+
+<script type="text/javascript">
+
+  
+  async function getData(url) {
+    let result;
+  try {
+    const response = await fetch(url, {
+  headers: {
+    'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1sZW5nMDU1QGdtYWlsLmNvbSIsImlkIjoxNTg5LCJuYW1lIjpudWxsLCJzdXJuYW1lIjpudWxsLCJpYXQiOjE2NzE2MDMyMTMsImV4cCI6MTE2NzE2MDMyMTMsImlzcyI6ImdvbGVtaW8iLCJqdGkiOiI0YjE1NzU4ZS0yZGM1LTQxNzQtOWZhMS0zNTBmYjRhNTBjMTUifQ.HWF4mKWGmvJQuQTq8WQoBY7Wk-jbN3Vml3ZRyKMy_6g'
+  }
+});
+     result =  await response.json();
+   // console.log(result)
+  } catch (error) {
+    console.error(error);
+  }
+  return result;
+}
+
+
+
+
+let interval;
+let timer;
+
+async function CountDownToZero(station, direction) {
+  // variable 1 = departure time
+  // variable 2 = current time
+  departurePassed = false;
+  const params = new URLSearchParams();
+  params.set('names', station);
+  params.set('includeMetroTrains','true')
+  const url = `https://api.golemio.cz/v2/pid/departureboards?${params}`;
+  document.getElementById("stationName").innerHTML = station;
+document.getElementById("stationDirection").innerHTML = direction;
+  let data = await getData(url);
+  console.log(url)
+  let departures = data.departures.filter(departure =>{return departure.trip.headsign === direction && departure.route.type === 1});
+  let departureTime = new Date(departures[0].departure_timestamp.scheduled);
+  let currentTime = new Date();
+ console.log(departureTime) ;
+  // interval = subtracts the future departure by current time
+  interval = departureTime - currentTime;
+  let minutes;
+  let seconds;
+  clearInterval(timer);
+  document.getElementById('metroCountDown').innerHTML = "Loading next train";
+  timer = setInterval(() => {
+    interval -= 1000; // decrement interval by 1000 milliseconds (1 second)
+    if (interval <= 0) {
+        clearInterval(timer);
+        departurePassed = true;
+        //restart the function with the same arguments after 1 second
+        setTimeout(() => {
+            CountDownToZero(station, direction);
+        }, 1000);
+    }
+    minutes = Math.floor(interval / 60000);
+    seconds = Math.floor(interval % 60000 / 1000);
+    document.getElementById('metroCountDown').innerHTML = minutes + ":" + seconds.toString().padStart(2, '0');
+  }, 1000);
+}
+function dropDown(value) {
+  if(value && value !== "Select Destination"){
+    let selected = value.split(', ');
+    let station = selected[0];
+    let direction = selected[1];
+    CountDownToZero(station, direction);
+  }
+  document.getElementById("mySelect").value = "Select Destination";
+}
+
+
+
+window.onload = function(){
+    document.getElementById("mySelect").addEventListener("onchange", dropDown);
+ }
+
+
+
+
+
+async function displayCzechTime() {
+  // Get the current date and time
+  var currentTime = new Date();
+  
+  // Set the time zone to Central European Time (CET)
+  currentTime.setTime(currentTime.getTime());
+ 
+
+  
+  // Get the hours, minutes, and seconds from the current time
+  var hours = currentTime.getHours();
+  var minutes = currentTime.getMinutes();
+  var seconds = currentTime.getSeconds();
+  
+  // Add a leading zero to the hours, minutes, and seconds if they are less than 10
+  if (hours < 10) {
+    hours = "0" + hours;
+  }
+  if (minutes < 10) {
+    minutes = "0" + minutes;
+  }
+  if (seconds < 10) {
+    seconds = "0" + seconds;
+  }
+  
+  // Concatenate the hours, minutes, and seconds into a single string and display it
+  var timeString = hours + ":" + minutes + ":" + seconds;
+  //console.log(timeString);
+
+
+document.getElementById('itIsCurrently').innerHTML = timeString 
+}
+
+setInterval(displayCzechTime, 1000);
+
+
+/*
+async function getTimeMain(station, direction) {
+  const params = new URLSearchParams();
+  params.set('names', station);
+  params.set('includeMetroTrains','true')
+  const url = `https://api.golemio.cz/v2/pid/departureboards?${params}`;
+  console.log(url)
+  
+  try {
+    const data = await getData(url);
+    let departures = data.departures.filter(departure =>{return departure.trip.headsign === direction && departure.route.type === 1});
+    let date = new Date(departures[0].departure_timestamp.scheduled);
+    document.getElementById('nextTrainTime').innerHTML = date.getHours().toString().padStart(2, '0')+":"+date.getMinutes().toString().padStart(2, '0')+":"+date.getSeconds().toString().padStart(2, '0');
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+getTimeMain("Luka","Černý Most");
+
+*/
+/*
+document.getElementById("counter").onclick = function() {countDown()};
+  
+  function countDown() {
+	
+	const maxSeconds = 10 * 60; // 10 minutes in seconds
+	  const randomSeconds = Math.floor(Math.random() * (maxSeconds + 1)); // Generate a random number of seconds up to 10 minutes
+	  let time = randomSeconds; // Set the initial time to the random time
+	  const timerElement = document.getElementById('counter'); // Get a reference to the timer element
+	
+	  
+	  // Use setInterval to count down from the initial time to zero
+	  const interval = setInterval(function() {
+		const minutes = Math.floor(time / 60); // Convert seconds to minutes
+		const seconds = time % 60; // Get the remaining seconds
+	   
+		timerElement.innerHTML = `<span class="minutes">${minutes}</span>:<span class="seconds">${seconds.toString().padStart(2, '0')}</span>`; // Update the timer element with the current time
+	   
+		time--; // Decrement the time by 1 second
+		if (time < 0) { // If the time is less than zero, clear the interval
+		  clearInterval(interval);
+		}
+	  }, 1000);
+  
+  };
+*/
+
+/* GAME PLAN
+
+  Better the UI/ destination selector
+
+  Fill in all the possible destination scenarios 
+
+  Better design
+
+  Test performance
+  Test breakage 
+  Test everything so that the product is unbreakable
+  
+  Study PWA
+
+  Make it user friendly (saves user preferences, ...)
+  Crash proof, so that users cant crash servers, ...
+
+  Monetize it
+
+  Launch
+
+*/
+  </script>
+
+
+<style>
+
+	.counter {
+		
+	}
+
+	main {
+		margin: auto;
+		padding: 1.5rem;
+		max-width: 60ch;
+	}
+	h1 {
+		font-size: 2rem;
+		font-weight: 800;
+		margin: 0;
+	}
+	.text-gradient {
+		background-image: var(--accent-gradient);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-size: 400%;
+		background-position: 0%;
+	}
+	.instructions {
+		line-height: 1.6;
+		margin: 1rem 0;
+		border: 1px solid rgba(var(--accent), 25%);
+		background-color: white;
+		padding: 1rem;
+		border-radius: 0.4rem;
+	}
+	.instructions code {
+		font-size: 0.875em;
+		font-weight: bold;
+		background: rgba(var(--accent), 12%);
+		color: rgb(var(--accent));
+		border-radius: 4px;
+		padding: 0.3em 0.45em;
+	}
+	.instructions strong {
+		color: rgb(var(--accent));
+	}
+	.link-card-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+		gap: 1rem;
+		padding: 0;
+	}
+</style>

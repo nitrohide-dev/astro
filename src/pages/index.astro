@@ -4,28 +4,28 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Metro.js">
 	<main>
-		<h1>Welcome to <span class="text-gradient">Metro.js</span></h1>
+		<h1> <span class=" flex justify-center text-gradient">Metro.js</span></h1>
 		
+		 <a href="second"> second page</a>
+
 		 
 
-		 <div class="mt-16"> current time: </div>
-
-		 <p class=" flex justify-center p-5 text-2xl font-bold " id="itIsCurrently">  </p>
+		 <p class=" flex justify-center p-5 mt-10 text-2xl font-bold " id="itIsCurrently">  </p>
 		
-		<div> next train:  </div>
+		
 
-		<div class=" m-10 flex justify-center"><div class="mr-5"> from </div>  <div class=" font-bold text-lg" id="stationName"></div> <div class="mr-5 ml-5"> to </div>  <div class=" font-bold text-lg" id="stationDirection"></div> </div>
+		<div class=" m-10 flex justify-center"><div class="mr-5"> FROM DESTINATION </div>  <div class=" font-bold text-lg" id="stationName"></div> <div class="mr-5 ml-5"> DIRECTION </div>  <div class=" font-bold text-lg" id="stationDirection"></div> </div>
 		
  
 
-		<div> NEXT TRAIN LEAVES IN:  </div>
-
-		<p class=" flex justify-center p-5 mt-10 text-5xl font-bold " id="metroCountDown"> </p>
+		
+    <div class=" flex justify-center"> Time until departure </div>
+		<p class=" flex justify-center p-5 mt-10 text-5xl font-bold border border-2 border-black " id="metroCountDown"> </p>
 
 		<!-- <p class=" mt-5 p-5 flex justify-center text-lg font-bold border-4 border-black hover:bg-slate-400" id="counter">Start Countdown (doesnt do anything)</p> --> 
 
 		
-
+<div class=" flex justify-center">
 		<select class=" mt-10 border border-black " id="mySelect" onchange="dropDown(this.value)" >
 		  <option selected>Select Destination</option>
 		  <option value="Luka, Černý Most">Luka, Černý Most</option>
@@ -33,8 +33,59 @@ import Layout from '../layouts/Layout.astro';
 		  <option value="Jiřího z Poděbrad, Depo Hostivař">Jiřího z Poděbrad, Depo Hostivař</option>
 		  <option value="Jiřího z Poděbrad, Nemocnice Motol">Jiřího z Poděbrad, Nemocnice Motol</option>
 		</select>
-   
-	</main>
+   </div>
+	
+
+   <div class="dropdown mt-10">
+    
+      <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()"  autocomplete="off">
+      <div id="myDropdown" class="dropdown-content">
+      <option value="Zličín, Černý Most" id="#Zličín, Černý Most">Zličín, Černý Most</option>
+      <option value="Stodůlky, Černý Most" id="#Stodůlky, Zličín">Stodůlky, Černý Most</option>
+      <option value="Luka, Černý Most" id="#Luka, Černý Most">Luka, Černý Most</option>
+      <option value="Lužiny, Černý Most" id="#Lužiny, Černý Most">Lužiny, Černý Most</option>
+      <option value="Hůrka, Černý Most" id="#Hůrka, Černý Most">Hůrka, Černý Most</option>
+      <option value="Nové Butovice, Černý Most" id="#Nové Butovice, Černý Most">Nové Butovice, Černý Most</option>
+      <option value="Jinonice, Černý Most" id="#Jinonice, Černý Most">Jinonice, Černý Most</option>
+      <option value="Radlická, Černý Most" id="#Radlická, Černý Most">Radlická, Černý Most</option>
+      <option value="Smíchovské nádraží, Černý Most" id="#Smíchovské nádraží, Černý Most">Smíchovské nádraží, Černý Most</option>
+      <option value="Anděl, Černý Most" id="#Anděl, Černý Most">Anděl, Černý Most</option>
+    </div>
+  </div>
+
+
+  
+  </main>
+ <!-- <div class=" flex justify-center mt-10 p-5">
+ 
+ 
+    <input class=" p-5" type="search" placeholder="Search.." id="search-bar" list="options">
+<datalist id="options">
+    <option value="Flora">Flora</option>
+    <option value="Jiřího z Poděbrad">Jiřího z Poděbrad</option>
+    <option value="Namesti Miru">Namesti Miru</option>
+    <option value="Muzeum">Muzeum</option>
+    <option value="Mustek">Mustek</option>
+    <option value="Malastrana">Malastrana</option>
+    <button type="button" id="submit-btn">Submit</button>
+</datalist>
+</div>  
+
+<div class=" flex justify-center mt-10 p-5">
+  
+  <div id="search-container">
+    <input type="text" id="search-input" placeholder="Search...">
+    <ul id="suggestions">
+      <li>suggestion 1</li>
+      <li>suggestion 2</li>
+      <li>suggestion 3</li>
+    </ul>
+  </div>
+
+</div>
+-->
+
+
 </Layout>
 
 
@@ -118,6 +169,92 @@ window.onload = function(){
 
 
 
+
+document.getElementById("myInput").addEventListener("click", function(){
+    document.getElementById("myDropdown").style.display = "block";
+});
+
+document.getElementById("myInput").addEventListener("change", function() {
+  let value = this.value;
+  if (value && value !== "Select Destination") {
+    let selected = value.split(', ');
+    let station = selected[0];
+    let direction = selected[1];
+    CountDownToZero(station, direction);
+  }
+});
+
+var options = document.getElementsByTagName("option");
+for (var i = 0; i < options.length; i++) {
+  options[i].addEventListener("click", function() {
+    let value = this.value;
+    if (value && value !== "Select Destination") {
+      let selected = value.split(', ');
+      let station = selected[0];
+      let direction = selected[1];
+      CountDownToZero(station, direction);
+    }
+    document.getElementById("myDropdown").style.display = "none";
+  });
+}
+
+
+
+
+ function filterFunction() {
+    var input, filter, option, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    option = document.getElementsByTagName("option");
+    for (i = 0; i < option.length; i++) {
+        if (option[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+            option[i].style.display = "";
+        } else {
+            option[i].style.display = "none";
+        }
+    }
+}
+
+
+
+
+
+/*
+ const input = document.getElementById("search-input");
+const suggestions = document.getElementById("suggestions");
+const specificValues = ['suggestion 1', 'suggestion 2', 'suggestion 3'];
+
+input.addEventListener("input", e => {
+  const value = e.target.value;
+  // Filter the specificValues array based on the input value
+  const filteredSuggestions = specificValues.filter(suggestion => suggestion.startsWith(value));
+  if(filteredSuggestions.length > 0) {
+    suggestions.style.display = "block";
+    suggestions.style.top = input.offsetHeight + 'px';
+    suggestions.style.left = input.offsetLeft + 'px';
+    suggestions.style.width = input.offsetWidth + 'px';
+  } else {
+    suggestions.style.display = "none";
+  }
+
+  suggestions.innerHTML = filteredSuggestions
+    .map(suggestion => `<li>${suggestion}</li>`)
+    .join("");
+});
+
+// Add event listener to each suggestion
+suggestions.addEventListener("click", e => {
+  // Check if the clicked element is a suggestion
+  if (e.target && e.target.nodeName === "LI") {
+    // Set the input's value to the clicked suggestion's text
+    input.value = e.target.textContent;
+    // Hide the suggestions
+    suggestions.style.display = "none";
+    // Pass the selected value to a function
+    submitInput(input.value)
+  }
+});
+*/
 
 
 async function displayCzechTime() {
@@ -230,7 +367,48 @@ document.getElementById("counter").onclick = function() {countDown()};
 
 
 <style>
+#myDropdown {
+    display: none;
+}
 
+#myInput {
+  display: block;
+  box-sizing: border-box;
+  background-position: 14px 12px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  padding: 14px 20px 12px 45px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+#myInput:focus {outline: 3px solid #ddd;}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f6f6f6;
+  min-width: 230px;
+  overflow: auto;
+  border: 1px solid #ddd;
+  z-index: 1;
+}
+
+.dropdown-content option {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown option:hover {background-color: #ddd;}
+
+.show {display: block;}
 	.counter {
 		
 	}

@@ -9,42 +9,105 @@ import Layout from '../layouts/Layout.astro';
 		<a href="/"> go back to 1st PAGE</a>
 
 
-		<p class=" flex justify-center p-5 mt-16 text-2xl font-bold " id="itIsCurrently"> </p>
-        
-        <p class=" flex justify-center p-5 mt-10 text-2xl font-bold " id="metroCountDown"> </p>
+				 
 
+    <p class=" flex justify-center p-5 mt-10 text-2xl font-bold " id="itIsCurrently">  </p>
+		
+		
+
+		<div class=" m-10 flex justify-center"><div class="mr-5"> FROM DESTINATION </div><div class="  font-bold text-lg flex justify-center" id="selected-option-text"></div>  <div class=" font-bold text-lg" id="stationName"></div> <div class="mr-5 ml-5"> DIRECTION </div><div class="  font-bold text-lg flex justify-center" id="selected-option-text2"></div>  <div class=" font-bold text-lg" id="stationDirection"></div> </div>
+		
+ 
+
+		
+    <div class=" flex justify-center"> Time until departure </div>
+		<p class=" flex justify-center p-5 mt-10 text-5xl font-bold border border-2 border-black " id="metroCountDown"> </p>
+
+		<!-- <p class=" mt-5 p-5 flex justify-center text-lg font-bold border-4 border-black hover:bg-slate-400" id="counter">Start Countdown (doesnt do anything)</p>  
+
+		
+<div class=" flex justify-center">
+		<select class=" mt-10 border border-black " id="mySelect" onchange="dropDown(this.value)" >
+		  <option selected>Select Destination</option>
+		  <option value="Luka, Černý Most">Luka, Černý Most</option>
+		  <option value="Luka, Zličín">Luka, Zličín</option>
+		  <option value="Jiřího z Poděbrad, Depo Hostivař">Jiřího z Poděbrad, Depo Hostivař</option>
+		  <option value="Jiřího z Poděbrad, Nemocnice Motol">Jiřího z Poděbrad, Nemocnice Motol</option>
+		</select>
+   </div>
+	-->
+
+  <div class=" flex justify-center">
+   <div class="dropdown1 mt-10 mr-10 border border-black">
+    
+      <input class="" type="text" placeholder="Search.." id="myInput1" onkeyup="filterFunction1()"  autocomplete="off">
+      <div id="myDropdown1" class="dropdown-content1">
+      <option value="Zličín" id="#Zličín" class="option-dropdown1">Zličín</option>
+      <option value="Stodůlky" id="#Stodůlky" class="option-dropdown1">Stodůlky</option>
+      <option value="Luka" id="#Luka" class="option-dropdown1">Luka</option>
+      <option value="Lužiny" id="#Lužiny" class="option-dropdown1">Lužiny</option>
+      <option value="Hůrka" id="#Hůrka" class="option-dropdown1">Hůrka</option>
+      <option value="Nové Butovice" id="#Nové Butovice" class="option-dropdown1">Nové Butovice</option>
+      <option value="Jinonice" id="#Jinonice" class="option-dropdown1">Jinonice</option>
+      <option value="Radlická" id="#Radlická" class="option-dropdown1">Radlická</option>
+
+      <option value="Smíchovské nádraží" id="#Smíchovské nádraží" class="option-dropdown1">Smíchovské nádraží</option>
+      <option value="Anděl" id="#Anděl" class="option-dropdown1">Anděl</option>
+      <option value="Karlovo náměstí" id="#Karlovo náměstí" class="option-dropdown1">Karlovo náměstí</option>
+      <option value="Náměstí Republiky" id="#Náměstí Republiky" class="option-dropdown1">Náměstí Republiky</option>
+      <option value="Florenc" id="#Florenc" class="option-dropdown1">Florenc</option>
       
+    </div>
+  </div>
+  
 
-		<p class=" mt-5 p-5 flex justify-center text-lg font-bold border-4 border-black hover:bg-slate-400" id="counter">Start Countdown</p>
+  <div class="dropdown2 mt-10 ml-10 border border-black">
+    
+    <input type="text" placeholder="Search.." id="myInput2" onkeyup="filterFunction2()"  autocomplete="off">
+    <div id="myDropdown2" class="dropdown-content2">
+    <option value="Černý Most" id="#Černý Most" class="option-dropdown2">Černý Most</option>
+    
+  </div>
+</div>
+  </div>
+  </main>
+ <!-- <div class=" flex justify-center mt-10 p-5">
+ 
+ 
+    <input class=" p-5" type="search" placeholder="Search.." id="search-bar" list="options">
+<datalist id="options">
+    <option value="Flora">Flora</option>
+    <option value="Jiřího z Poděbrad">Jiřího z Poděbrad</option>
+    <option value="Namesti Miru">Namesti Miru</option>
+    <option value="Muzeum">Muzeum</option>
+    <option value="Mustek">Mustek</option>
+    <option value="Malastrana">Malastrana</option>
+    <button type="button" id="submit-btn">Submit</button>
+</datalist>
+</div>  
 
-        
+<div class=" flex justify-center mt-10 p-5">
+  
+  <div id="search-container">
+    <input type="text" id="search-input" placeholder="Search...">
+    <ul id="suggestions">
+      <li>suggestion 1</li>
+      <li>suggestion 2</li>
+      <li>suggestion 3</li>
+    </ul>
+  </div>
 
-          <select class=" mt-10 border border-black " id="mySelect" onchange="dropDown(this.value)">
-            <option value="">Select an option</option>
-            <option value="Luka, Černý Most">Luka, Černý Most</option>
-            <option value="Luka, Zličín">Luka, Zličín</option>
-            <option value="Jiřího z Poděbrad, Depo Hostivař">Jiřího z Poděbrad, Depo Hostivař</option>
-          </select>
+</div>
+-->
 
 
-	</main>
 </Layout>
 
 
 <script type="text/javascript">
 
-/*
- async function dropDown(value) {
-        // do something with the value passed to the function
-        if (value === "Luka, Černý Most"){
-        let dest = "'Luka'"+ ',' +" 'Černý Most'"
-
-        console.log(dest)
-        }
-    }
- */  
-
-        async function getData(url) {
+  
+  async function getData(url) {
     let result;
   try {
     const response = await fetch(url, {
@@ -61,53 +124,186 @@ import Layout from '../layouts/Layout.astro';
 }
 
 
-let departurePassed = false;
+
+
 let interval;
+let timer;
 
 async function CountDownToZero(station, direction) {
+  // variable 1 = departure time
+  // variable 2 = current time
+  departurePassed = false;
   const params = new URLSearchParams();
   params.set('names', station);
   params.set('includeMetroTrains','true')
   const url = `https://api.golemio.cz/v2/pid/departureboards?${params}`;
-  console.log(url)
   let data = await getData(url);
+  console.log(url)
   let departures = data.departures.filter(departure =>{return departure.trip.headsign === direction && departure.route.type === 1});
   let departureTime = new Date(departures[0].departure_timestamp.scheduled);
   let currentTime = new Date();
+ console.log(departureTime) ;
+  // interval = subtracts the future departure by current time
   interval = departureTime - currentTime;
   let minutes;
   let seconds;
-  // interval counts down to zero
-  setInterval(() => {
+  clearInterval(timer);
+  document.getElementById('metroCountDown').innerHTML = "Loading next train";
+  timer = setInterval(() => {
     interval -= 1000; // decrement interval by 1000 milliseconds (1 second)
     if (interval <= 0) {
-        clearInterval();
+        clearInterval(timer);
         departurePassed = true;
+        //restart the function with the same arguments after 1 second
+        setTimeout(() => {
+            CountDownToZero(station, direction);
+        }, 1000);
     }
     minutes = Math.floor(interval / 60000);
     seconds = Math.floor(interval % 60000 / 1000);
     document.getElementById('metroCountDown').innerHTML = minutes + ":" + seconds.toString().padStart(2, '0');
   }, 1000);
-  
-  // refresh, recall function after 0
-  setTimeout(() => {
-    if(!departurePassed) {
-      CountDownToZero(station, direction);
-    }
-  }, interval);
 }
-CountDownToZero("Luka","Černý Most");
+/*
+function dropDown(value) {
+  if(value && value !== "Select Destination"){
+    let selected = value.split(', ');
+    let station = selected[0];
+    let direction = selected[1];
+    CountDownToZero(station, direction);
+  }
+  document.getElementById("mySelect").value = "Select Destination";
+}
 
 
- 
 
-// BELLOW LOGS THE CURRENT TIME 
+window.onload = function(){
+    document.getElementById("mySelect").addEventListener("onchange", dropDown);
+ }
+*/
+
+//
+
+let selectedStation = null;
+let selectedDirection = null;
+
+function handleSelection() {
+  if (selectedStation != null && selectedDirection != null) {
+    CountDownToZero(selectedStation, selectedDirection);
+  }
+}
+
+document.getElementById("myInput1").addEventListener("click", function(){
+    document.getElementById("myDropdown1").style.display = "block";
+});
+
+var options = document.getElementsByClassName("option-dropdown1");
+for (var i = 0; i < options.length; i++) {
+  options[i].addEventListener("click", function() {
+    selectedStation = this.value;
+    console.log(selectedStation);
+    document.getElementById("myDropdown1").style.display = "none";
+    document.getElementById("selected-option-text").innerHTML = selectedStation;
+    handleSelection();
+    document.getElementById("myInput1").value = "";
+  });
+}
+
+document.getElementById("myInput2").addEventListener("click", function(){
+    document.getElementById("myDropdown2").style.display = "block";
+});
+
+var options = document.getElementsByClassName("option-dropdown2");
+for (var i = 0; i < options.length; i++) {
+  options[i].addEventListener("click", function() {
+    selectedDirection = this.value;
+    console.log(selectedDirection);
+    document.getElementById("myDropdown2").style.display = "none";
+    document.getElementById("selected-option-text2").innerHTML = selectedDirection;
+    handleSelection();
+    document.getElementById("myInput2").value = "";
+  });
+}
+//
+
+function filterFunction1() {
+    var input, filter, option, i;
+    input = document.getElementById("myInput1");
+    filter = input.value.toUpperCase();
+    option = document.getElementsByClassName("option-dropdown1");
+    for (i = 0; i < option.length; i++) {
+        if (option[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+            option[i].style.display = "";
+        } else {
+            option[i].style.display = "none";
+        }
+    }
+}
+
+function filterFunction2() {
+    var input, filter, option, i;
+    input = document.getElementById("myInput2");
+    filter = input.value.toUpperCase();
+    option = document.getElementsByClassName("option-dropdown2");
+    for (i = 0; i < option.length; i++) {
+        if (option[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+            option[i].style.display = "";
+        } else {
+            option[i].style.display = "none";
+        }
+    }
+}
+
+
+
+
+
+/*
+ const input = document.getElementById("search-input");
+const suggestions = document.getElementById("suggestions");
+const specificValues = ['suggestion 1', 'suggestion 2', 'suggestion 3'];
+
+input.addEventListener("input", e => {
+  const value = e.target.value;
+  // Filter the specificValues array based on the input value
+  const filteredSuggestions = specificValues.filter(suggestion => suggestion.startsWith(value));
+  if(filteredSuggestions.length > 0) {
+    suggestions.style.display = "block";
+    suggestions.style.top = input.offsetHeight + 'px';
+    suggestions.style.left = input.offsetLeft + 'px';
+    suggestions.style.width = input.offsetWidth + 'px';
+  } else {
+    suggestions.style.display = "none";
+  }
+
+  suggestions.innerHTML = filteredSuggestions
+    .map(suggestion => `<li>${suggestion}</li>`)
+    .join("");
+});
+
+// Add event listener to each suggestion
+suggestions.addEventListener("click", e => {
+  // Check if the clicked element is a suggestion
+  if (e.target && e.target.nodeName === "LI") {
+    // Set the input's value to the clicked suggestion's text
+    input.value = e.target.textContent;
+    // Hide the suggestions
+    suggestions.style.display = "none";
+    // Pass the selected value to a function
+    submitInput(input.value)
+  }
+});
+*/
+
+
 async function displayCzechTime() {
   // Get the current date and time
   var currentTime = new Date();
   
   // Set the time zone to Central European Time (CET)
- // currentTime.setTime(currentTime.getTime());
+  currentTime.setTime(currentTime.getTime());
+ 
+
   
   // Get the hours, minutes, and seconds from the current time
   var hours = currentTime.getHours();
@@ -127,62 +323,176 @@ async function displayCzechTime() {
   
   // Concatenate the hours, minutes, and seconds into a single string and display it
   var timeString = hours + ":" + minutes + ":" + seconds;
-  console.log(timeString);
-
-  let timeRightNow = timeString
+  //console.log(timeString);
 
 
-document.getElementById('itIsCurrently').innerHTML = timeRightNow 
+document.getElementById('itIsCurrently').innerHTML = timeString 
 }
 
-displayCzechTime();
+setInterval(displayCzechTime, 1000);
 
 
-//       /              |\
-//      /            __ |/
-//     |  /    \  / |   |\
-//     / /   ^  \/  |-  | \
-//    / /__ / \ /   |__ |  \
-//   /         
-//  
-//  
-//
-// BELLOW TRIAL OF THE INITIAL TIME VALUE THAT WILL COUNT DOWN
 /*
-function grabingT() {
-
-    let whatTimeIsIt = timeString;
-    let nextTrain = counterr;
-
-    console.log('It is currently', whatTimeIsIt, 'and the next train arrives at', nextTrain)
+async function getTimeMain(station, direction) {
+  const params = new URLSearchParams();
+  params.set('names', station);
+  params.set('includeMetroTrains','true')
+  const url = `https://api.golemio.cz/v2/pid/departureboards?${params}`;
+  console.log(url)
+  
+  try {
+    const data = await getData(url);
+    let departures = data.departures.filter(departure =>{return departure.trip.headsign === direction && departure.route.type === 1});
+    let date = new Date(departures[0].departure_timestamp.scheduled);
+    document.getElementById('nextTrainTime').innerHTML = date.getHours().toString().padStart(2, '0')+":"+date.getMinutes().toString().padStart(2, '0')+":"+date.getSeconds().toString().padStart(2, '0');
+  } catch (error) {
+    console.error(error);
+  }
 }
-grabingT()
+
+getTimeMain("Luka","Černý Most");
+
+*/
+/*
+document.getElementById("counter").onclick = function() {countDown()};
+  
+  function countDown() {
+	
+	const maxSeconds = 10 * 60; // 10 minutes in seconds
+	  const randomSeconds = Math.floor(Math.random() * (maxSeconds + 1)); // Generate a random number of seconds up to 10 minutes
+	  let time = randomSeconds; // Set the initial time to the random time
+	  const timerElement = document.getElementById('counter'); // Get a reference to the timer element
+	
+	  
+	  // Use setInterval to count down from the initial time to zero
+	  const interval = setInterval(function() {
+		const minutes = Math.floor(time / 60); // Convert seconds to minutes
+		const seconds = time % 60; // Get the remaining seconds
+	   
+		timerElement.innerHTML = `<span class="minutes">${minutes}</span>:<span class="seconds">${seconds.toString().padStart(2, '0')}</span>`; // Update the timer element with the current time
+	   
+		time--; // Decrement the time by 1 second
+		if (time < 0) { // If the time is less than zero, clear the interval
+		  clearInterval(interval);
+		}
+	  }, 1000);
+  
+  };
 */
 
-/* BELLOW PLAN
+/* GAME PLAN
 
- trigger getTimeMain by a dropdown menu
+  Better the UI/ destination selector
 
+  Fill in all the possible destination scenarios 
 
+  Better design
 
- create the initial countdown value 
- - grab departure time and subtract it by current time
+  Test performance
+  Test breakage 
+  Test everything so that the product is unbreakable
+  
+  Study PWA
 
- put it in a function that counts it down till 0, REFRESHES to the next one and the returns a message 
+  Make it user friendly (saves user preferences, ...)
+  Crash proof, so that users cant crash servers, ...
 
+  Monetize it
 
-  */
-</script>
- 
+  Launch
+
+*/
+  </script>
 
 
 <style>
+#myDropdown1 {
+    display: none;
+}
 
+#myInput1 {
+  display: block;
+  box-sizing: border-box;
+  background-position: 14px 12px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  padding: 14px 20px 12px 45px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+#myInput1:focus {outline: 3px solid #ddd;}
+
+.dropdown1 {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content1 {
+  display: none;
+  position: absolute;
+  background-color: #f6f6f6;
+  min-width: 230px;
+  overflow: auto;
+  border: 1px solid #ddd;
+  z-index: 1;
+}
+
+.dropdown-content1 option {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown1 option:hover {background-color: #ddd;}
+
+#myDropdown2 {
+    display: none;
+}
+
+#myInput2 {
+  display: block;
+  box-sizing: border-box;
+  background-position: 14px 12px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  padding: 14px 20px 12px 45px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+#myInput2:focus {outline: 3px solid #ddd;}
+
+.dropdown2 {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content2 {
+  display: none;
+  position: absolute;
+  background-color: #f6f6f6;
+  min-width: 230px;
+  overflow: auto;
+  border: 1px solid #ddd;
+  z-index: 1;
+}
+
+.dropdown-content2 option {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown2 option:hover {background-color: #ddd;}
+
+
+.show {display: block;}
 	.counter {
 		
 	}
-
-   
 
 	main {
 		margin: auto;

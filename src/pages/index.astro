@@ -6,7 +6,7 @@ import Layout from '../layouts/Layout.astro';
 	<main>
 		<h1> <span class=" flex justify-center text-gradient">Metro.js</span></h1>
 		
-		 <a href="second"> second page</a>  <a href="test"> TEST</a>
+		
 
 		 
 
@@ -14,7 +14,14 @@ import Layout from '../layouts/Layout.astro';
 		
 		
 
-     <div class=" m-10 flex justify-center"><div class="mr-5"> FROM DESTINATION </div><div class="  font-bold text-lg flex justify-center" id="selected-option-text"></div>  <div class=" font-bold text-lg" id="stationName"></div> <div class="mr-5 ml-5"> DIRECTION </div><div class="  font-bold text-lg flex justify-center" id="selected-option-text2"></div>  <div class=" font-bold text-lg" id="stationDirection"></div> </div>
+    <div class=" m-10 flex justify-center">
+      <div class="mr-5"> FROM DESTINATION </div>
+      <div class="  font-bold text-lg flex justify-center" id="selected-option-text"></div>  
+      <div class=" font-bold text-lg" id="stationName"></div> 
+      <div class="mr-5 ml-5"> DIRECTION </div>
+      <div class="  font-bold text-lg flex justify-center" id="selected-option-text2"></div>  
+      <div class=" font-bold text-lg" id="stationDirection"></div> 
+    </div>
      
   
  
@@ -22,22 +29,10 @@ import Layout from '../layouts/Layout.astro';
      <div class=" flex justify-center"> Time until departure </div>
      <p class=" flex justify-center p-5 mt-10 text-5xl font-bold border border-2 border-black " id="metroCountDown"> </p>
  
-     <!-- <p class=" mt-5 p-5 flex justify-center text-lg font-bold border-4 border-black hover:bg-slate-400" id="counter">Start Countdown (doesnt do anything)</p>  
- 
-     
- <div class=" flex justify-center">
-     <select class=" mt-10 border border-black " id="mySelect" onchange="dropDown(this.value)" >
-       <option selected>Select Destination</option>
-       <option value="Luka, Černý Most">Luka, Černý Most</option>
-       <option value="Luka, Zličín">Luka, Zličín</option>
-       <option value="Jiřího z Poděbrad, Depo Hostivař">Jiřího z Poděbrad, Depo Hostivař</option>
-       <option value="Jiřího z Poděbrad, Nemocnice Motol">Jiřího z Poděbrad, Nemocnice Motol</option>
-     </select>
-    </div>
-   -->
- 
+
+     <div class="flex justify-center mt-10"> FROM DESTINATION </div>
    <div class=" flex justify-center">
-    <div class="dropdown1 mt-10 mr-10 border border-black">
+    <div class="dropdown1 mt-5 border border-black">
      
        <input class="" type="text" placeholder="Search.." id="myInput1" onkeyup="filterFunction1()"  autocomplete="off">
        <div id="myDropdown1" class="dropdown-content1">
@@ -109,9 +104,10 @@ import Layout from '../layouts/Layout.astro';
        
      </div>
    </div>
-   
- 
-   <div class="dropdown2 mt-10 ml-10 border border-black">
+   </div>
+   <div class="flex justify-center mt-10"> DESIRED DESTINATION </div>
+ <div class="flex justify-center"> 
+   <div class="dropdown2 mt-5 border border-black">
      
      <input type="text" placeholder="Search.." id="myInput2" onkeyup="filterFunction2()"  autocomplete="off">
      <div id="myDropdown2" class="dropdown-content2">
@@ -179,10 +175,10 @@ import Layout from '../layouts/Layout.astro';
       <option value="Opatov" id="#Opatov" class="option-dropdown2">Opatov</option>
       <option value="Háje" id="#Háje" class="option-dropdown2">Háje</option>
      
-     
+     </div>
    </div>
  </div>
-   </div>
+   
    </main>
   <!-- <div class=" flex justify-center mt-10 p-5">
   
@@ -342,13 +338,20 @@ const arrays = [LineA, LineB, LineC];
    }
  }
  
- // Add event listener to input1 to show options when clicked
-document.getElementById("myInput1").addEventListener("click", function(){
-    document.getElementById("myDropdown1").style.display = "block";
+ document.getElementById("myInput1").addEventListener("input", function(){
+    if (document.getElementById("myInput1").value !== "") {
+        document.getElementById("myDropdown1").style.display = "block";
+      }
 });
 
 
-let selected1 = false;
+document.getElementById("myInput1").addEventListener("blur", function(){
+    if (document.getElementById("myInput1").value === "") {
+        document.getElementById("myDropdown1").style.display = "none";
+    }
+});
+
+
 // Add event listener to options to select the option when clicked
 var options = document.getElementsByClassName("option-dropdown1");
 for (var i = 0; i < options.length; i++) {
@@ -363,16 +366,15 @@ for (var i = 0; i < options.length; i++) {
         handleSelection();
         // Clear the input value
         document.getElementById("myInput1").value = "";
-        selected1 = false;
     });
 }
 
 // Add event listener to input2 to show options when clicked
-document.getElementById("myInput2").addEventListener("click", function(){
+document.getElementById("myInput2").addEventListener("input", function(){
     document.getElementById("myDropdown2").style.display = "block";
 });
 
-let selected2 = false;
+
 // Add event listener to options to select the option when clicked
 var options = document.getElementsByClassName("option-dropdown2");
 for (var i = 0; i < options.length; i++) {
@@ -387,7 +389,7 @@ for (var i = 0; i < options.length; i++) {
         handleSelection();
         // Clear the input value
         document.getElementById("myInput2").value = "";
-        selected2 = true;
+        
     });
 }
  
@@ -418,6 +420,9 @@ function finalDirection() {
     
 
 
+if (selectedStation === "Jiřího z Poděbrad" || selectedDirection === "Jiřího z Poděbrad" ) {
+        console.log("Jiřího z Poděbrad is closed")
+}else {
 
 if (selector === selector2) {
 
@@ -483,7 +488,7 @@ else {
     }else if(selectedStation === "Florenc"){
       console.log("xxx")
     }
-}
+}}
 }return resultDirection;
 }
 
@@ -502,7 +507,7 @@ else {
          } else {
              option[i].style.display = "none";
          }
-     }
+     } 
  }
  
  function filterFunction2() {

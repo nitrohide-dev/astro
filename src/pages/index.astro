@@ -2,184 +2,505 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
+
 <Layout title="Metro.js">
-	<main>
-		<h1> <span class=" flex justify-center text-gradient">Metro.js</span></h1>
-		
-		
+  <main>
+    <h1><span class="flex justify-center text-gradient">Metro.js</span></h1>
 
-		 
+    <p
+      class="flex justify-center p-5 mt-10 text-2xl font-bold"
+      id="itIsCurrently"
+    >
+    </p>
 
-     <p class=" flex justify-center p-5 mt-10 text-2xl font-bold " id="itIsCurrently">  </p>
-		
-		
-
-    <div class=" m-10 flex justify-center">
-      <div class="mr-5"> FROM DESTINATION </div>
-      <div class="  font-bold text-lg flex justify-center" id="selected-option-text"></div>  
-      <div class=" font-bold text-lg" id="stationName"></div> 
-      <div class="mr-5 ml-5"> DIRECTION </div>
-      <div class="  font-bold text-lg flex justify-center" id="selected-option-text2"></div>  
-      <div class=" font-bold text-lg" id="stationDirection"></div> 
+    <div class="m-10 flex justify-center">
+      <div class="mr-5">FROM DESTINATION</div>
+      <div
+        class="font-bold text-lg flex justify-center"
+        id="selected-option-text"
+      >
+      </div>
+      <div class="font-bold text-lg" id="stationName"></div>
+      <div class="mr-5 ml-5">DIRECTION</div>
+      <div
+        class="font-bold text-lg flex justify-center"
+        id="selected-option-text2"
+      >
+      </div>
+      <div class="font-bold text-lg" id="stationDirection"></div>
     </div>
-     
-  
- 
-     
-     <div class=" flex justify-center"> Time until departure </div>
-     <p class=" flex justify-center p-5 mt-10 text-5xl font-bold border border-2 border-black " id="metroCountDown"> </p>
- 
 
-     <div class="flex justify-center mt-10"> FROM DESTINATION </div>
-   <div class=" flex justify-center">
-    <div class="dropdown1 mt-5 border border-black">
-     
-       <input class="" type="text" placeholder="Search.." id="myInput1" onkeyup="filterFunction1()"  autocomplete="off">
-       <div id="myDropdown1" class="dropdown-content1">
+    <div class="flex justify-center">Time until departure</div>
+    <p
+      class="flex justify-center p-5 mt-10 text-5xl font-bold border border-2 border-black"
+      id="metroCountDown"
+    >
+    </p>
 
-        <option value="Nemocnice Motol" id="#Nemocnice Motol" class="option-dropdown1">Nemocnice Motol</option>
-        <option value="Petřiny" id="#Petřiny" class="option-dropdown1">Petřiny</option>
-        <option value="Nádraží Veleslavín" id="#Nádraží Veleslavín" class="option-dropdown1">Nádraží Veleslavín</option>
-        <option value="Bořislavka" id="#Bořislavka" class="option-dropdown1">Bořislavka</option>
-        <option value="Dejvická" id="#Dejvická" class="option-dropdown1">Dejvická</option>
-        <option value="Hradčanská" id="#Hradčanská" class="option-dropdown1">Hradčanská</option>
-        <option value="Malostranská" id="#Malostranská" class="option-dropdown1">Malostranská</option>
-        <option value="Staroměstská" id="#Staroměstská" class="option-dropdown1">Staroměstská</option>
-        <option value="Můstek" id="#Můstek" class="option-dropdown1">Můstek</option>
-        <option value="Muzeum" id="#Muzeum" class="option-dropdown1">Muzeum</option>
-        <option value="Náměstí Míru" id="#Náměstí Míru" class="option-dropdown1">Náměstí Míru</option>
-        <option value="Jiřího z Poděbrad" id="#Jiřího z Poděbrad" class="option-dropdown1">Jiřího z Poděbrad</option>
-        <option value="Flora" id="#Flora" class="option-dropdown1">Flora</option>
-        <option value="Želivského" id="#Želivského" class="option-dropdown1">Želivského</option>
-        <option value="Strašnická" id="#Strašnická" class="option-dropdown1">Strašnická</option>
-        <option value="Skalka" id="#Skalka" class="option-dropdown1">Skalka</option>
-        <option value="Depo Hostivař" id="#Depo Hostivař" class="option-dropdown1">Depo Hostivař</option>
+    <div class="flex justify-center mt-10">FROM DESTINATION</div>
+    <div class="flex justify-center">
+      <div class="dropdown1 mt-5 border border-black">
+        <input
+          class=""
+          type="text"
+          placeholder="Search.."
+          id="myInput1"
+          onkeyup="filterFunction1()"
+          autocomplete="off"
+        />
+        <div id="myDropdown1" class="dropdown-content1">
+          <option
+            value="Nemocnice Motol"
+            id="#Nemocnice Motol"
+            class="option-dropdown1">Nemocnice Motol</option
+          >
+          <option value="Petřiny" id="#Petřiny" class="option-dropdown1"
+            >Petřiny</option
+          >
+          <option
+            value="Nádraží Veleslavín"
+            id="#Nádraží Veleslavín"
+            class="option-dropdown1">Nádraží Veleslavín</option
+          >
+          <option value="Bořislavka" id="#Bořislavka" class="option-dropdown1"
+            >Bořislavka</option
+          >
+          <option value="Dejvická" id="#Dejvická" class="option-dropdown1"
+            >Dejvická</option
+          >
+          <option value="Hradčanská" id="#Hradčanská" class="option-dropdown1"
+            >Hradčanská</option
+          >
+          <option
+            value="Malostranská"
+            id="#Malostranská"
+            class="option-dropdown1">Malostranská</option
+          >
+          <option
+            value="Staroměstská"
+            id="#Staroměstská"
+            class="option-dropdown1">Staroměstská</option
+          >
+          <option value="Můstek" id="#Můstek" class="option-dropdown1"
+            >Můstek</option
+          >
+          <option value="Muzeum" id="#Muzeum" class="option-dropdown1"
+            >Muzeum</option
+          >
+          <option
+            value="Náměstí Míru"
+            id="#Náměstí Míru"
+            class="option-dropdown1">Náměstí Míru</option
+          >
+          <option
+            value="Jiřího z Poděbrad"
+            id="#Jiřího z Poděbrad"
+            class="option-dropdown1">Jiřího z Poděbrad</option
+          >
+          <option value="Flora" id="#Flora" class="option-dropdown1"
+            >Flora</option
+          >
+          <option value="Želivského" id="#Želivského" class="option-dropdown1"
+            >Želivského</option
+          >
+          <option value="Strašnická" id="#Strašnická" class="option-dropdown1"
+            >Strašnická</option
+          >
+          <option value="Skalka" id="#Skalka" class="option-dropdown1"
+            >Skalka</option
+          >
+          <option
+            value="Depo Hostivař"
+            id="#Depo Hostivař"
+            class="option-dropdown1">Depo Hostivař</option
+          >
 
-        <option value="Zličín" id="#Zličín" class="option-dropdown1">Zličín</option>
-        <option value="Stodůlky" id="#Stodůlky" class="option-dropdown1">Stodůlky</option>
-        <option value="Luka" id="#Luka" class="option-dropdown1">Luka</option>
-        <option value="Lužiny" id="#Lužiny" class="option-dropdown1">Lužiny</option>
-        <option value="Hůrka" id="#Hůrka" class="option-dropdown1">Hůrka</option>
-        <option value="Nové Butovice" id="#Nové Butovice" class="option-dropdown1">Nové Butovice</option>
-        <option value="Jinonice" id="#Jinonice" class="option-dropdown1">Jinonice</option>
-        <option value="Radlická" id="#Radlická" class="option-dropdown1">Radlická</option>
-        <option value="Smíchovské nádraží" id="#Smíchovské nádraží" class="option-dropdown1">Smíchovské nádraží</option>
-        <option value="Anděl" id="#Anděl" class="option-dropdown1">Anděl</option>
-        <option value="Karlovo náměstí" id="#Karlovo náměstí" class="option-dropdown1">Karlovo náměstí</option>
-        <option value="Národní třída" id="#Národní třída" class="option-dropdown1">Národní třída</option>
-        <option value="Můstek" id="#Můstek" class="option-dropdown1">Můstek</option>
-        <option value="Náměstí Republiky" id="#Náměstí Republiky" class="option-dropdown1">Náměstí Republiky</option>
-        <option value="Florenc" id="#Florenc" class="option-dropdown1">Florenc</option>
-        <option value="Křižíkova" id="#Křižíkova" class="option-dropdown1">Křižíkova</option>
-        <option value="Invalidovna" id="#Invalidovna" class="option-dropdown1">Invalidovna</option>
-        <option value="Palmovka" id="#Palmovka" class="option-dropdown1">Palmovka</option>
-        <option value="Českomoravská" id="#Českomoravská" class="option-dropdown1">Českomoravská</option>
-        <option value="Vysočanská" id="#Vysočanská" class="option-dropdown1">Vysočanská</option>
-        <option value="Kolbenova" id="#Kolbenova" class="option-dropdown1">Kolbenova</option>
-        <option value="Hloubětín" id="#Hloubětín" class="option-dropdown1">Hloubětín</option>
-        <option value="Rajská zahrada" id="#Rajská zahrada" class="option-dropdown1">Rajská zahrada</option>
-        <option value="Černý Most" id="#Černý Most" class="option-dropdown1">Černý Most</option>
+          <option value="Zličín" id="#Zličín" class="option-dropdown1"
+            >Zličín</option
+          >
+          <option value="Stodůlky" id="#Stodůlky" class="option-dropdown1"
+            >Stodůlky</option
+          >
+          <option value="Luka" id="#Luka" class="option-dropdown1">Luka</option>
+          <option value="Lužiny" id="#Lužiny" class="option-dropdown1"
+            >Lužiny</option
+          >
+          <option value="Hůrka" id="#Hůrka" class="option-dropdown1"
+            >Hůrka</option
+          >
+          <option
+            value="Nové Butovice"
+            id="#Nové Butovice"
+            class="option-dropdown1">Nové Butovice</option
+          >
+          <option value="Jinonice" id="#Jinonice" class="option-dropdown1"
+            >Jinonice</option
+          >
+          <option value="Radlická" id="#Radlická" class="option-dropdown1"
+            >Radlická</option
+          >
+          <option
+            value="Smíchovské nádraží"
+            id="#Smíchovské nádraží"
+            class="option-dropdown1">Smíchovské nádraží</option
+          >
+          <option value="Anděl" id="#Anděl" class="option-dropdown1"
+            >Anděl</option
+          >
+          <option
+            value="Karlovo náměstí"
+            id="#Karlovo náměstí"
+            class="option-dropdown1">Karlovo náměstí</option
+          >
+          <option
+            value="Národní třída"
+            id="#Národní třída"
+            class="option-dropdown1">Národní třída</option
+          >
+          <option value="Můstek" id="#Můstek" class="option-dropdown1"
+            >Můstek</option
+          >
+          <option
+            value="Náměstí Republiky"
+            id="#Náměstí Republiky"
+            class="option-dropdown1">Náměstí Republiky</option
+          >
+          <option value="Florenc" id="#Florenc" class="option-dropdown1"
+            >Florenc</option
+          >
+          <option value="Křižíkova" id="#Křižíkova" class="option-dropdown1"
+            >Křižíkova</option
+          >
+          <option value="Invalidovna" id="#Invalidovna" class="option-dropdown1"
+            >Invalidovna</option
+          >
+          <option value="Palmovka" id="#Palmovka" class="option-dropdown1"
+            >Palmovka</option
+          >
+          <option
+            value="Českomoravská"
+            id="#Českomoravská"
+            class="option-dropdown1">Českomoravská</option
+          >
+          <option value="Vysočanská" id="#Vysočanská" class="option-dropdown1"
+            >Vysočanská</option
+          >
+          <option value="Kolbenova" id="#Kolbenova" class="option-dropdown1"
+            >Kolbenova</option
+          >
+          <option value="Hloubětín" id="#Hloubětín" class="option-dropdown1"
+            >Hloubětín</option
+          >
+          <option
+            value="Rajská zahrada"
+            id="#Rajská zahrada"
+            class="option-dropdown1">Rajská zahrada</option
+          >
+          <option value="Černý Most" id="#Černý Most" class="option-dropdown1"
+            >Černý Most</option
+          >
 
-        <option value="Letňany" id="#Letňany" class="option-dropdown1">Letňany</option>
-        <option value="Prosek" id="#Prosek" class="option-dropdown1">Prosek</option>
-        <option value="Střížkov" id="#Střížkov" class="option-dropdown1">Střížkov</option>
-        <option value="Ládví" id="#Ládví" class="option-dropdown1">Ládví</option>
-        <option value="Kobylisy" id="#Kobylisy" class="option-dropdown1">Kobylisy</option>
-        <option value="Nádraží Holešovice" id="#Nádraží Holešovice" class="option-dropdown1">Nádraží Holešovice</option>
-        <option value="Vltavská" id="#Vltavská" class="option-dropdown1">Vltavská</option>
-        <option value="Florenc" id="#Florenc" class="option-dropdown1">Florenc</option>
-        <option value="Hlavní nádraží" id="#Hlavní nádraží" class="option-dropdown1">Hlavní nádraží</option>
-        <option value="Muzeum" id="#Muzeum" class="option-dropdown1">Muzeum</option>
-        <option value="I. P. Pavlova" id="#I. P. Pavlova" class="option-dropdown1">I. P. Pavlova</option>
-        <option value="Vyšehrad" id="#Vyšehrad" class="option-dropdown1">Vyšehrad</option>
-        <option value="Pražského povstání" id="#Pražského povstání" class="option-dropdown1">Pražského povstání</option>
-        <option value="Pankrác" id="#Pankrác" class="option-dropdown1">Pankrác</option>
-        <option value="Budějovická" id="#Budějovická" class="option-dropdown1">Budějovická</option>
-        <option value="Kačerov" id="#Kačerov" class="option-dropdown1">Kačerov</option>
-        <option value="Roztyly" id="#Roztyly" class="option-dropdown1">Roztyly</option>
-        <option value="Chodov" id="#Chodov" class="option-dropdown1">Chodov</option>
-        <option value="Opatov" id="#Opatov" class="option-dropdown1">Opatov</option>
-        <option value="Háje" id="#Háje" class="option-dropdown1">Háje</option>
-         
-       
-     </div>
-   </div>
-   </div>
-   <div class="flex justify-center mt-10"> DESIRED DESTINATION </div>
- <div class="flex justify-center"> 
-   <div class="dropdown2 mt-5 border border-black">
-     
-     <input type="text" placeholder="Search.." id="myInput2" onkeyup="filterFunction2()"  autocomplete="off">
-     <div id="myDropdown2" class="dropdown-content2">
-      <option value="Nemocnice Motol" id="#Nemocnice Motol" class="option-dropdown2">Nemocnice Motol</option>
-      <option value="Petřiny" id="#Petřiny" class="option-dropdown2">Petřiny</option>
-      <option value="Nádraží Veleslavín" id="#Nádraží Veleslavín" class="option-dropdown2">Nádraží Veleslavín</option>
-      <option value="Bořislavka" id="#Bořislavka" class="option-dropdown2">Bořislavka</option>
-      <option value="Dejvická" id="#Dejvická" class="option-dropdown2">Dejvická</option>
-      <option value="Hradčanská" id="#Hradčanská" class="option-dropdown2">Hradčanská</option>
-      <option value="Malostranská" id="#Malostranská" class="option-dropdown2">Malostranská</option>
-      <option value="Staroměstská" id="#Staroměstská" class="option-dropdown2">Staroměstská</option>
-      <option value="Můstek" id="#Můstek" class="option-dropdown2">Můstek</option>
-      <option value="Muzeum" id="#Muzeum" class="option-dropdown2">Muzeum</option>
-      <option value="Náměstí Míru" id="#Náměstí Míru" class="option-dropdown2">Náměstí Míru</option>
-      <option value="Jiřího z Poděbrad" id="#Jiřího z Poděbrad" class="option-dropdown2">Jiřího z Poděbrad</option>
-      <option value="Flora" id="#Flora" class="option-dropdown2">Flora</option>
-      <option value="Želivského" id="#Želivského" class="option-dropdown2">Želivského</option>
-      <option value="Strašnická" id="#Strašnická" class="option-dropdown2">Strašnická</option>
-      <option value="Skalka" id="#Skalka" class="option-dropdown2">Skalka</option>
-      <option value="Depo Hostivař" id="#Depo Hostivař" class="option-dropdown2">Depo Hostivař</option>
+          <option value="Letňany" id="#Letňany" class="option-dropdown1"
+            >Letňany</option
+          >
+          <option value="Prosek" id="#Prosek" class="option-dropdown1"
+            >Prosek</option
+          >
+          <option value="Střížkov" id="#Střížkov" class="option-dropdown1"
+            >Střížkov</option
+          >
+          <option value="Ládví" id="#Ládví" class="option-dropdown1"
+            >Ládví</option
+          >
+          <option value="Kobylisy" id="#Kobylisy" class="option-dropdown1"
+            >Kobylisy</option
+          >
+          <option
+            value="Nádraží Holešovice"
+            id="#Nádraží Holešovice"
+            class="option-dropdown1">Nádraží Holešovice</option
+          >
+          <option value="Vltavská" id="#Vltavská" class="option-dropdown1"
+            >Vltavská</option
+          >
+          <option value="Florenc" id="#Florenc" class="option-dropdown1"
+            >Florenc</option
+          >
+          <option
+            value="Hlavní nádraží"
+            id="#Hlavní nádraží"
+            class="option-dropdown1">Hlavní nádraží</option
+          >
+          <option value="Muzeum" id="#Muzeum" class="option-dropdown1"
+            >Muzeum</option
+          >
+          <option
+            value="I. P. Pavlova"
+            id="#I. P. Pavlova"
+            class="option-dropdown1">I. P. Pavlova</option
+          >
+          <option value="Vyšehrad" id="#Vyšehrad" class="option-dropdown1"
+            >Vyšehrad</option
+          >
+          <option
+            value="Pražského povstání"
+            id="#Pražského povstání"
+            class="option-dropdown1">Pražského povstání</option
+          >
+          <option value="Pankrác" id="#Pankrác" class="option-dropdown1"
+            >Pankrác</option
+          >
+          <option value="Budějovická" id="#Budějovická" class="option-dropdown1"
+            >Budějovická</option
+          >
+          <option value="Kačerov" id="#Kačerov" class="option-dropdown1"
+            >Kačerov</option
+          >
+          <option value="Roztyly" id="#Roztyly" class="option-dropdown1"
+            >Roztyly</option
+          >
+          <option value="Chodov" id="#Chodov" class="option-dropdown1"
+            >Chodov</option
+          >
+          <option value="Opatov" id="#Opatov" class="option-dropdown1"
+            >Opatov</option
+          >
+          <option value="Háje" id="#Háje" class="option-dropdown1">Háje</option>
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-center mt-10">DESIRED DESTINATION</div>
+    <div class="flex justify-center">
+      <div class="dropdown2 mt-5 border border-black">
+        <input
+          type="text"
+          placeholder="Search.."
+          id="myInput2"
+          onkeyup="filterFunction2()"
+          autocomplete="off"
+        />
+        <div id="myDropdown2" class="dropdown-content2">
+          <option
+            value="Nemocnice Motol"
+            id="#Nemocnice Motol"
+            class="option-dropdown2">Nemocnice Motol</option
+          >
+          <option value="Petřiny" id="#Petřiny" class="option-dropdown2"
+            >Petřiny</option
+          >
+          <option
+            value="Nádraží Veleslavín"
+            id="#Nádraží Veleslavín"
+            class="option-dropdown2">Nádraží Veleslavín</option
+          >
+          <option value="Bořislavka" id="#Bořislavka" class="option-dropdown2"
+            >Bořislavka</option
+          >
+          <option value="Dejvická" id="#Dejvická" class="option-dropdown2"
+            >Dejvická</option
+          >
+          <option value="Hradčanská" id="#Hradčanská" class="option-dropdown2"
+            >Hradčanská</option
+          >
+          <option
+            value="Malostranská"
+            id="#Malostranská"
+            class="option-dropdown2">Malostranská</option
+          >
+          <option
+            value="Staroměstská"
+            id="#Staroměstská"
+            class="option-dropdown2">Staroměstská</option
+          >
+          <option value="Můstek" id="#Můstek" class="option-dropdown2"
+            >Můstek</option
+          >
+          <option value="Muzeum" id="#Muzeum" class="option-dropdown2"
+            >Muzeum</option
+          >
+          <option
+            value="Náměstí Míru"
+            id="#Náměstí Míru"
+            class="option-dropdown2">Náměstí Míru</option
+          >
+          <option
+            value="Jiřího z Poděbrad"
+            id="#Jiřího z Poděbrad"
+            class="option-dropdown2">Jiřího z Poděbrad</option
+          >
+          <option value="Flora" id="#Flora" class="option-dropdown2"
+            >Flora</option
+          >
+          <option value="Želivského" id="#Želivského" class="option-dropdown2"
+            >Želivského</option
+          >
+          <option value="Strašnická" id="#Strašnická" class="option-dropdown2"
+            >Strašnická</option
+          >
+          <option value="Skalka" id="#Skalka" class="option-dropdown2"
+            >Skalka</option
+          >
+          <option
+            value="Depo Hostivař"
+            id="#Depo Hostivař"
+            class="option-dropdown2">Depo Hostivař</option
+          >
 
-      <option value="Zličín" id="#Zličín" class="option-dropdown2">Zličín</option>
-      <option value="Stodůlky" id="#Stodůlky" class="option-dropdown2">Stodůlky</option>
-      <option value="Luka" id="#Luka" class="option-dropdown2">Luka</option>
-      <option value="Lužiny" id="#Lužiny" class="option-dropdown2">Lužiny</option>
-      <option value="Hůrka" id="#Hůrka" class="option-dropdown2">Hůrka</option>
-      <option value="Nové Butovice" id="#Nové Butovice" class="option-dropdown2">Nové Butovice</option>
-      <option value="Jinonice" id="#Jinonice" class="option-dropdown2">Jinonice</option>
-      <option value="Radlická" id="#Radlická" class="option-dropdown2">Radlická</option>
-      <option value="Smíchovské nádraží" id="#Smíchovské nádraží" class="option-dropdown2">Smíchovské nádraží</option>
-      <option value="Anděl" id="#Anděl" class="option-dropdown2">Anděl</option>
-      <option value="Karlovo náměstí" id="#Karlovo náměstí" class="option-dropdown2">Karlovo náměstí</option>
-      <option value="Národní třída" id="#Národní třída" class="option-dropdown2">Národní třída</option>
-      <option value="Můstek" id="#Můstek" class="option-dropdown2">Můstek</option>
-      <option value="Náměstí Republiky" id="#Náměstí Republiky" class="option-dropdown2">Náměstí Republiky</option>
-      <option value="Florenc" id="#Florenc" class="option-dropdown2">Florenc</option>
-      <option value="Křižíkova" id="#Křižíkova" class="option-dropdown2">Křižíkova</option>
-      <option value="Invalidovna" id="#Invalidovna" class="option-dropdown2">Invalidovna</option>
-      <option value="Palmovka" id="#Palmovka" class="option-dropdown2">Palmovka</option>
-      <option value="Českomoravská" id="#Českomoravská" class="option-dropdown2">Českomoravská</option>
-      <option value="Vysočanská" id="#Vysočanská" class="option-dropdown2">Vysočanská</option>
-      <option value="Kolbenova" id="#Kolbenova" class="option-dropdown2">Kolbenova</option>
-      <option value="Hloubětín" id="#Hloubětín" class="option-dropdown2">Hloubětín</option>
-      <option value="Rajská zahrada" id="#Rajská zahrada" class="option-dropdown2">Rajská zahrada</option>
-      <option value="Černý Most" id="#Černý Most" class="option-dropdown2">Černý Most</option>
+          <option value="Zličín" id="#Zličín" class="option-dropdown2"
+            >Zličín</option
+          >
+          <option value="Stodůlky" id="#Stodůlky" class="option-dropdown2"
+            >Stodůlky</option
+          >
+          <option value="Luka" id="#Luka" class="option-dropdown2">Luka</option>
+          <option value="Lužiny" id="#Lužiny" class="option-dropdown2"
+            >Lužiny</option
+          >
+          <option value="Hůrka" id="#Hůrka" class="option-dropdown2"
+            >Hůrka</option
+          >
+          <option
+            value="Nové Butovice"
+            id="#Nové Butovice"
+            class="option-dropdown2">Nové Butovice</option
+          >
+          <option value="Jinonice" id="#Jinonice" class="option-dropdown2"
+            >Jinonice</option
+          >
+          <option value="Radlická" id="#Radlická" class="option-dropdown2"
+            >Radlická</option
+          >
+          <option
+            value="Smíchovské nádraží"
+            id="#Smíchovské nádraží"
+            class="option-dropdown2">Smíchovské nádraží</option
+          >
+          <option value="Anděl" id="#Anděl" class="option-dropdown2"
+            >Anděl</option
+          >
+          <option
+            value="Karlovo náměstí"
+            id="#Karlovo náměstí"
+            class="option-dropdown2">Karlovo náměstí</option
+          >
+          <option
+            value="Národní třída"
+            id="#Národní třída"
+            class="option-dropdown2">Národní třída</option
+          >
+          <option value="Můstek" id="#Můstek" class="option-dropdown2"
+            >Můstek</option
+          >
+          <option
+            value="Náměstí Republiky"
+            id="#Náměstí Republiky"
+            class="option-dropdown2">Náměstí Republiky</option
+          >
+          <option value="Florenc" id="#Florenc" class="option-dropdown2"
+            >Florenc</option
+          >
+          <option value="Křižíkova" id="#Křižíkova" class="option-dropdown2"
+            >Křižíkova</option
+          >
+          <option value="Invalidovna" id="#Invalidovna" class="option-dropdown2"
+            >Invalidovna</option
+          >
+          <option value="Palmovka" id="#Palmovka" class="option-dropdown2"
+            >Palmovka</option
+          >
+          <option
+            value="Českomoravská"
+            id="#Českomoravská"
+            class="option-dropdown2">Českomoravská</option
+          >
+          <option value="Vysočanská" id="#Vysočanská" class="option-dropdown2"
+            >Vysočanská</option
+          >
+          <option value="Kolbenova" id="#Kolbenova" class="option-dropdown2"
+            >Kolbenova</option
+          >
+          <option value="Hloubětín" id="#Hloubětín" class="option-dropdown2"
+            >Hloubětín</option
+          >
+          <option
+            value="Rajská zahrada"
+            id="#Rajská zahrada"
+            class="option-dropdown2">Rajská zahrada</option
+          >
+          <option value="Černý Most" id="#Černý Most" class="option-dropdown2"
+            >Černý Most</option
+          >
 
-      <option value="Letňany" id="#Letňany" class="option-dropdown2">Letňany</option>
-      <option value="Prosek" id="#Prosek" class="option-dropdown2">Prosek</option>
-      <option value="Střížkov" id="#Střížkov" class="option-dropdown2">Střížkov</option>
-      <option value="Ládví" id="#Ládví" class="option-dropdown2">Ládví</option>
-      <option value="Kobylisy" id="#Kobylisy" class="option-dropdown2">Kobylisy</option>
-      <option value="Nádraží Holešovice" id="#Nádraží Holešovice" class="option-dropdown2">Nádraží Holešovice</option>
-      <option value="Vltavská" id="#Vltavská" class="option-dropdown2">Vltavská</option>
-      <option value="Florenc" id="#Florenc" class="option-dropdown2">Florenc</option>
-      <option value="Hlavní nádraží" id="#Hlavní nádraží" class="option-dropdown2">Hlavní nádraží</option>
-      <option value="Muzeum" id="#Muzeum" class="option-dropdown2">Muzeum</option>
-      <option value="I. P. Pavlova" id="#I. P. Pavlova" class="option-dropdown2">I. P. Pavlova</option>
-      <option value="Vyšehrad" id="#Vyšehrad" class="option-dropdown2">Vyšehrad</option>
-      <option value="Pražského povstání" id="#Pražského povstání" class="option-dropdown2">Pražského povstání</option>
-      <option value="Pankrác" id="#Pankrác" class="option-dropdown2">Pankrác</option>
-      <option value="Budějovická" id="#Budějovická" class="option-dropdown2">Budějovická</option>
-      <option value="Kačerov" id="#Kačerov" class="option-dropdown2">Kačerov</option>
-      <option value="Roztyly" id="#Roztyly" class="option-dropdown2">Roztyly</option>
-      <option value="Chodov" id="#Chodov" class="option-dropdown2">Chodov</option>
-      <option value="Opatov" id="#Opatov" class="option-dropdown2">Opatov</option>
-      <option value="Háje" id="#Háje" class="option-dropdown2">Háje</option>
-     
-     </div>
-   </div>
- </div>
-   
-   </main>
+          <option value="Letňany" id="#Letňany" class="option-dropdown2"
+            >Letňany</option
+          >
+          <option value="Prosek" id="#Prosek" class="option-dropdown2"
+            >Prosek</option
+          >
+          <option value="Střížkov" id="#Střížkov" class="option-dropdown2"
+            >Střížkov</option
+          >
+          <option value="Ládví" id="#Ládví" class="option-dropdown2"
+            >Ládví</option
+          >
+          <option value="Kobylisy" id="#Kobylisy" class="option-dropdown2"
+            >Kobylisy</option
+          >
+          <option
+            value="Nádraží Holešovice"
+            id="#Nádraží Holešovice"
+            class="option-dropdown2">Nádraží Holešovice</option
+          >
+          <option value="Vltavská" id="#Vltavská" class="option-dropdown2"
+            >Vltavská</option
+          >
+          <option value="Florenc" id="#Florenc" class="option-dropdown2"
+            >Florenc</option
+          >
+          <option
+            value="Hlavní nádraží"
+            id="#Hlavní nádraží"
+            class="option-dropdown2">Hlavní nádraží</option
+          >
+          <option value="Muzeum" id="#Muzeum" class="option-dropdown2"
+            >Muzeum</option
+          >
+          <option
+            value="I. P. Pavlova"
+            id="#I. P. Pavlova"
+            class="option-dropdown2">I. P. Pavlova</option
+          >
+          <option value="Vyšehrad" id="#Vyšehrad" class="option-dropdown2"
+            >Vyšehrad</option
+          >
+          <option
+            value="Pražského povstání"
+            id="#Pražského povstání"
+            class="option-dropdown2">Pražského povstání</option
+          >
+          <option value="Pankrác" id="#Pankrác" class="option-dropdown2"
+            >Pankrác</option
+          >
+          <option value="Budějovická" id="#Budějovická" class="option-dropdown2"
+            >Budějovická</option
+          >
+          <option value="Kačerov" id="#Kačerov" class="option-dropdown2"
+            >Kačerov</option
+          >
+          <option value="Roztyly" id="#Roztyly" class="option-dropdown2"
+            >Roztyly</option
+          >
+          <option value="Chodov" id="#Chodov" class="option-dropdown2"
+            >Chodov</option
+          >
+          <option value="Opatov" id="#Opatov" class="option-dropdown2"
+            >Opatov</option
+          >
+          <option value="Háje" id="#Háje" class="option-dropdown2">Háje</option>
+        </div>
+      </div>
+    </div>
+  </main>
   <!-- <div class=" flex justify-center mt-10 p-5">
   
   
@@ -208,72 +529,93 @@ import Layout from '../layouts/Layout.astro';
  
  </div>
  -->
- 
- 
- </Layout>
- 
- 
- <script type="text/javascript">
- 
-   
-   async function getData(url) {
-     let result;
-   try {
-     const response = await fetch(url, {
-   headers: {
-     'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1sZW5nMDU1QGdtYWlsLmNvbSIsImlkIjoxNTg5LCJuYW1lIjpudWxsLCJzdXJuYW1lIjpudWxsLCJpYXQiOjE2NzE2MDMyMTMsImV4cCI6MTE2NzE2MDMyMTMsImlzcyI6ImdvbGVtaW8iLCJqdGkiOiI0YjE1NzU4ZS0yZGM1LTQxNzQtOWZhMS0zNTBmYjRhNTBjMTUifQ.HWF4mKWGmvJQuQTq8WQoBY7Wk-jbN3Vml3ZRyKMy_6g'
-   }
- });
-      result =  await response.json();
-    // console.log(result)
-   } catch (error) {
-     console.error(error);
-   }
-   return result;
- }
- 
- 
- 
- 
- let interval;
- let timer;
- 
- async function CountDownToZero(station, direction) {
-   // variable 1 = departure time
-   // variable 2 = current time
-   departurePassed = false;
-   const params = new URLSearchParams();
-   params.set('names', station);
-   params.set('includeMetroTrains','true')
-   const url = `https://api.golemio.cz/v2/pid/departureboards?${params}`;
-   let data = await getData(url);
-   console.log(url)
-   let departures = data.departures.filter(departure =>{return departure.trip.headsign === direction && departure.route.type === 1});
-   let departureTime = new Date(departures[0].departure_timestamp.scheduled);
-   let currentTime = new Date();
-  console.log(departureTime) ;
-   // interval = subtracts the future departure by current time
-   interval = departureTime - currentTime;
-   let minutes;
-   let seconds;
-   clearInterval(timer);
-   document.getElementById('metroCountDown').innerHTML = "Loading next train";
-   timer = setInterval(() => {
-     interval -= 1000; // decrement interval by 1000 milliseconds (1 second)
-     if (interval <= 0) {
-         clearInterval(timer);
-         departurePassed = true;
-         //restart the function with the same arguments after 1 second
-         setTimeout(() => {
-             CountDownToZero(station, direction);
-         }, 1000);
-     }
-     minutes = Math.floor(interval / 60000);
-     seconds = Math.floor(interval % 60000 / 1000);
-     document.getElementById('metroCountDown').innerHTML = minutes + ":" + seconds.toString().padStart(2, '0');
-   }, 1000);
- }
- /*
+</Layout>
+
+<script type="text/javascript">
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/../sw.js').then(function(registration) {
+      console.log('Service Worker registered:', registration);
+    }).catch(function(error) {
+      console.error('Service Worker registration failed:', error);
+    });
+  });
+}
+
+  async function getData(url) {
+    let result;
+    try {
+      const response = await fetch(url, {
+        headers: {
+          'x-access-token':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1sZW5nMDU1QGdtYWlsLmNvbSIsImlkIjoxNTg5LCJuYW1lIjpudWxsLCJzdXJuYW1lIjpudWxsLCJpYXQiOjE2NzE2MDMyMTMsImV4cCI6MTE2NzE2MDMyMTMsImlzcyI6ImdvbGVtaW8iLCJqdGkiOiI0YjE1NzU4ZS0yZGM1LTQxNzQtOWZhMS0zNTBmYjRhNTBjMTUifQ.HWF4mKWGmvJQuQTq8WQoBY7Wk-jbN3Vml3ZRyKMy_6g',
+        },
+      });
+      result = await response.json();
+      // console.log(result)
+    } catch (error) {
+      console.error(error);
+    }
+    return result;
+  }
+
+  let interval;
+  let timer;
+
+  async function CountDownToZero(station, direction) {
+    // variable 1 = departure time
+    // variable 2 = current time
+    departurePassed = false;
+    const params = new URLSearchParams();
+    params.set('names', station);
+    params.set('includeMetroTrains', 'true');
+    const url = `https://api.golemio.cz/v2/pid/departureboards?${params}`;
+    let data = await getData(url);
+    let departures = data.departures.filter((departure) => {
+      return (
+        departure.trip.headsign === direction && departure.route.type === 1
+      );
+    });
+
+    // Midnight problems solution
+    let notDepartureTime = new Date(); // for computations around midnight
+    while (departures.length === 0) {
+      notDepartureTime.setTime(notDepartureTime.getTime() + 3600000);
+      params.set('timeFrom', notDepartureTime.toISOString());
+      data = await getData(url);
+      departures = data.departures.filter((departure) => {
+        return (
+          departure.trip.headsign === direction && departure.route.type === 1
+        );
+      });
+    }
+    let departureTime = new Date(departures[0].departure_timestamp.scheduled);
+    let currentTime = new Date();
+    console.log(departureTime);
+    // interval = subtracts the future departure by current time
+    interval = departureTime - currentTime;
+    let minutes;
+    let seconds;
+    clearInterval(timer);
+    document.getElementById('metroCountDown').innerHTML = 'Loading next train';
+    timer = setInterval(() => {
+      interval -= 1000; // decrement interval by 1000 milliseconds (1 second)
+      if (interval <= 0) {
+        clearInterval(timer);
+        departurePassed = true;
+        //restart the function with the same arguments after 1 second
+        setTimeout(() => {
+          CountDownToZero(station, direction);
+        }, 1000);
+      }
+      minutes = Math.floor(interval / 60000);
+      seconds = Math.floor((interval % 60000) / 1000);
+      document.getElementById('metroCountDown').innerHTML =
+        minutes + ':' + seconds.toString().padStart(2, '0');
+    }, 1000);
+  }
+  /*
  function dropDown(value) {
    if(value && value !== "Select Destination"){
      let selected = value.split(', ');
@@ -290,245 +632,341 @@ import Layout from '../layouts/Layout.astro';
      document.getElementById("mySelect").addEventListener("onchange", dropDown);
   }
  */
- 
- //
- 
 
+  //
 
- const LineA = {
-  name: "Line A",
-  ends: ["Nemocnice Motol", "Depo Hostivař"],
-  stations: ["Nemocnice Motol", "Petřiny", "Nádraží Veleslavín", "Bořislavka", "Dejvická", "Hradčanská", "Malostranská", "Staroměstská", "Můstek", "Muzeum", "Náměstí Míru", 
-                  "Jiřího z Poděbrad", "Flora", "Želivského", "Strašnická", "Skalka", "Depo Hostivař" ]
-};
-const LineB = {
-  name: "Line B",
-  ends: ["Zličín", "Černý Most"],
-  stations: ["Zličín", "Stodůlky", "Luka", "Lužiny", "Hůrka", "Nové Butovice", "Jinonice", "Radlická", "Smíchovské nádraží", "Anděl", "Karlovo náměstí", "Národní třída", "Můstek", 
-                 "Náměstí Republiky", "Florenc", "Křižíkova", "Invalidovna", "Palmovka", "Českomoravská", "Vysočanská", "Kolbenova", "Hloubětín", "Rajská zahrada", "Černý Most" ]
-};
-const LineC = {
-  name: "Line C",
-  ends: ["Letňany", "Háje"],
-  stations: ["Letňany", "Prosek", "Střížkov", "Ládví", "Kobylisy", "Nádraží Holešovice", "Vltavská", "Florenc", "Hlavní nádraží", "Muzeum", "I. P. Pavlova", 
-                  "Vyšehrad", "Pražského povstání", "Pankrác", "Budějovická", "Kačerov", "Roztyly", "Chodov", "Opatov", "Háje" ]
-};
+  const LineA = {
+    name: 'Line A',
+    ends: ['Nemocnice Motol', 'Depo Hostivař'],
+    stations: [
+      'Nemocnice Motol',
+      'Petřiny',
+      'Nádraží Veleslavín',
+      'Bořislavka',
+      'Dejvická',
+      'Hradčanská',
+      'Malostranská',
+      'Staroměstská',
+      'Můstek',
+      'Muzeum',
+      'Náměstí Míru',
+      'Jiřího z Poděbrad',
+      'Flora',
+      'Želivského',
+      'Strašnická',
+      'Skalka',
+      'Depo Hostivař',
+    ],
+  };
+  const LineB = {
+    name: 'Line B',
+    ends: ['Zličín', 'Černý Most'],
+    stations: [
+      'Zličín',
+      'Stodůlky',
+      'Luka',
+      'Lužiny',
+      'Hůrka',
+      'Nové Butovice',
+      'Jinonice',
+      'Radlická',
+      'Smíchovské nádraží',
+      'Anděl',
+      'Karlovo náměstí',
+      'Národní třída',
+      'Můstek',
+      'Náměstí Republiky',
+      'Florenc',
+      'Křižíkova',
+      'Invalidovna',
+      'Palmovka',
+      'Českomoravská',
+      'Vysočanská',
+      'Kolbenova',
+      'Hloubětín',
+      'Rajská zahrada',
+      'Černý Most',
+    ],
+  };
+  const LineC = {
+    name: 'Line C',
+    ends: ['Letňany', 'Háje'],
+    stations: [
+      'Letňany',
+      'Prosek',
+      'Střížkov',
+      'Ládví',
+      'Kobylisy',
+      'Nádraží Holešovice',
+      'Vltavská',
+      'Florenc',
+      'Hlavní nádraží',
+      'Muzeum',
+      'I. P. Pavlova',
+      'Vyšehrad',
+      'Pražského povstání',
+      'Pankrác',
+      'Budějovická',
+      'Kačerov',
+      'Roztyly',
+      'Chodov',
+      'Opatov',
+      'Háje',
+    ],
+  };
 
+  let selector;
+  let selector2;
+  const arrays = [LineA, LineB, LineC];
 
+  let selectedStation = null;
+  let selectedDirection = null;
 
+  let resultDirection = null;
 
+  function handleSelection() {
+    if (selectedStation != null && selectedDirection != null) {
+      finalDirection();
+    }
 
-let selector;
-let selector2;
-const arrays = [LineA, LineB, LineC];
+    if (selectedStation != null && resultDirection != null) {
+      CountDownToZero(selectedStation, resultDirection);
+      console.log(resultDirection);
+    }
+  }
 
- let selectedStation = null;
- let selectedDirection = null;
- 
- let resultDirection = null;
+  document.getElementById('myInput1').addEventListener('input', function () {
+    if (document.getElementById('myInput1').value !== '') {
+      document.getElementById('myDropdown1').style.display = 'block';
+    }
+  });
 
- function handleSelection() {
+  document.getElementById('myInput1').addEventListener('blur', function () {
+    if (document.getElementById('myInput1').value === '') {
+      document.getElementById('myDropdown1').style.display = 'none';
+    }
+  });
+
+  // Add event listener to options to select the option when clicked
+  var options = document.getElementsByClassName('option-dropdown1');
+  for (var i = 0; i < options.length; i++) {
+    options[i].addEventListener('click', function () {
+      // Store the selected value
+      selectedStation = this.value;
+      console.log(selectedStation);
+      // Hide the options
+      document.getElementById('myDropdown1').style.display = 'none';
+      // Update the selected option text
+      document.getElementById('selected-option-text').innerHTML =
+        selectedStation;
+      handleSelection();
+      // Clear the input value
+      document.getElementById('myInput1').value = '';
+    });
+  }
+
+  // Add event listener to input2 to show options when clicked
+  document.getElementById('myInput2').addEventListener('input', function () {
+    document.getElementById('myDropdown2').style.display = 'block';
+  });
+
+  // Add event listener to options to select the option when clicked
+  var options = document.getElementsByClassName('option-dropdown2');
+  for (var i = 0; i < options.length; i++) {
+    options[i].addEventListener('click', function () {
+      // Store the selected value
+      selectedDirection = this.value;
+      console.log(selectedDirection);
+      // Hide the options
+      document.getElementById('myDropdown2').style.display = 'none';
+      // Update the selected option text
+      document.getElementById('selected-option-text2').innerHTML =
+        selectedDirection;
+      handleSelection();
+      // Clear the input value
+      document.getElementById('myInput2').value = '';
+    });
+  }
+
   if (selectedStation != null && selectedDirection != null) {
     finalDirection();
   }
 
-  if (selectedStation != null && resultDirection != null) {
-     CountDownToZero(selectedStation, resultDirection);
-     console.log(resultDirection)
-   }
- }
- 
- document.getElementById("myInput1").addEventListener("input", function(){
-    if (document.getElementById("myInput1").value !== "") {
-        document.getElementById("myDropdown1").style.display = "block";
-      }
-});
-
-
-document.getElementById("myInput1").addEventListener("blur", function(){
-    if (document.getElementById("myInput1").value === "") {
-        document.getElementById("myDropdown1").style.display = "none";
-    }
-});
-
-
-// Add event listener to options to select the option when clicked
-var options = document.getElementsByClassName("option-dropdown1");
-for (var i = 0; i < options.length; i++) {
-    options[i].addEventListener("click", function() {
-        // Store the selected value
-        selectedStation = this.value;
-        console.log(selectedStation);
-        // Hide the options
-        document.getElementById("myDropdown1").style.display = "none";
-        // Update the selected option text
-        document.getElementById("selected-option-text").innerHTML = selectedStation;
-        handleSelection();
-        // Clear the input value
-        document.getElementById("myInput1").value = "";
-    });
-}
-
-// Add event listener to input2 to show options when clicked
-document.getElementById("myInput2").addEventListener("input", function(){
-    document.getElementById("myDropdown2").style.display = "block";
-});
-
-
-// Add event listener to options to select the option when clicked
-var options = document.getElementsByClassName("option-dropdown2");
-for (var i = 0; i < options.length; i++) {
-    options[i].addEventListener("click", function() {
-        // Store the selected value
-        selectedDirection = this.value;
-        console.log(selectedDirection);
-        // Hide the options
-        document.getElementById("myDropdown2").style.display = "none";
-        // Update the selected option text
-        document.getElementById("selected-option-text2").innerHTML = selectedDirection;
-        handleSelection();
-        // Clear the input value
-        document.getElementById("myInput2").value = "";
-        
-    });
-}
- 
-
-
-if (selectedStation != null && selectedDirection != null) {
-  
-    finalDirection()
- 
-}
-
-
-  
-function finalDirection() { 
-
-  
-
-  
-
-  arrays.forEach(array => {
-    if (array.stations.includes(selectedStation)) {
+  function finalDirection() {
+    arrays.forEach((array) => {
+      if (array.stations.includes(selectedStation)) {
         selector = array;
-    }
-    if (array.stations.includes(selectedDirection)) {
+      }
+      if (array.stations.includes(selectedDirection)) {
         selector2 = array;
-    }else {"error idiot"}
-});
-    
+      } else {
+        ('error idiot');
+      }
+    });
 
-
-if (selectedStation === "Jiřího z Poděbrad" || selectedDirection === "Jiřího z Poděbrad" ) {
-        console.log("Jiřího z Poděbrad is closed")
-}else {
-
-if (selector === selector2) {
-
-    
- if (selectedStation != selectedDirection) {
-            if (selector.stations.indexOf(selectedStation) < selector2.stations.indexOf(selectedDirection)) {
-                resultDirection = selector.ends[1];
-                console.log("i work and logged in one of the ends based on the same line")
-            } else {
-                resultDirection = selector.ends[0];
-                console.log("i work and logged in one of the ends based on the same line")
-            } }  else {console.log("error dumbass CLEAR THE HTML THINGS")}}
-          
-else {
-            if ((selectedStation === "Letňany" || selectedStation === "Prosek" || selectedStation === "Střížkov" || selectedStation === "Ládví" || selectedStation === "Kobylisy" || selectedStation === "Nádraží Holešovice" || 
-            selectedStation === "Vltavská") && (selector2 === LineA || selector2 === LineB)){ 
-              resultDirection = "Háje"
-
-            }else if ( (selectedStation === "Vyšehrad" || selectedStation === "Pražského povstání" || selectedStation === "Pankrác" || selectedStation === "Budějovická" || selectedStation === "Kačerov" || selectedStation === "Roztyly" || 
-            selectedStation === "Chodov" || selectedStation === "Opatov" || selectedStation === "Háje") && (selector2 === LineA || selector2 === LineB)){
-              resultDirection = "Letňany"
-            
-            }else if ((selectedStation === "Zličín" || selectedStation === "Stodůlky" || selectedStation === "Luka" || selectedStation === "Lužiny" || selectedStation === "Hůrka" || selectedStation === "Nové Butovice" || 
-            selectedStation === "Jinonice" || selectedStation === "Radlická" || selectedStation === "Smíchovské nádraží" || selectedStation === "Anděl" || selectedStation === "Karlovo náměstí" ||
-             selectedStation === "Národní třída") && (selector2 === LineA || selector2 === LineC)){
-              resultDirection = "Černý Most"
-              console.log("it is what it is")
-
-            }else if ((selectedStation === "Křižíkova" || selectedStation === "Invalidovna" || selectedStation === "Palmovka" || selectedStation === "Českomoravská" || selectedStation === "Vysočanská" || selectedStation === "Kolbenova" || 
-            selectedStation === "Hloubětín" || selectedStation === "Rajská zahrada" || selectedStation === "Černý Most") && (selector2 === LineA || selector2 === LineC)) {
-              resultDirection = "Zličín"
-
-            }else if ((selectedStation === "Depo Hostivař" || selectedStation === "Skalka" || selectedStation === "Želivského" || selectedStation === "Flora " || selectedStation === "Jiřího z Poděbrad" || selectedStation === "Náměstí Míru" ||
-             selectedStation === "Strašnická") && (selector2 === LineB || selector2 === LineC)){
-              resultDirection = "Nemocnice Motol"
-
-            }else if ((selectedStation === "Nemocnice Motol" || selectedStation === "Petřiny " || selectedStation === "Bořislavka" || selectedStation === "Dejvická" || selectedStation === "Hradčanská " || 
-            selectedStation === "Malostranská" || selectedStation === "Staroměstská " || selectedStation === " Nádraží Veleslavín") && (selector2 === LineB || selector2 === LineC)){
-              resultDirection = "Depo Hostivař"
-             
-                  
+    if (
+      selectedStation === 'Jiřího z Poděbrad' ||
+      selectedDirection === 'Jiřího z Poděbrad'
+    ) {
+      console.log('Jiřího z Poděbrad is closed');
+    } else {
+      if (selector === selector2) {
+        if (selectedStation != selectedDirection) {
+          if (
+            selector.stations.indexOf(selectedStation) <
+            selector2.stations.indexOf(selectedDirection)
+          ) {
+            resultDirection = selector.ends[1];
+            console.log(
+              'i work and logged in one of the ends based on the same line'
+            );
+          } else {
+            resultDirection = selector.ends[0];
+            console.log(
+              'i work and logged in one of the ends based on the same line'
+            );
+          }
+        } else {
+          console.log('error dumbass CLEAR THE HTML THINGS');
+        }
+      } else {
+        if (
+          (selectedStation === 'Letňany' ||
+            selectedStation === 'Prosek' ||
+            selectedStation === 'Střížkov' ||
+            selectedStation === 'Ládví' ||
+            selectedStation === 'Kobylisy' ||
+            selectedStation === 'Nádraží Holešovice' ||
+            selectedStation === 'Vltavská') &&
+          (selector2 === LineA || selector2 === LineB)
+        ) {
+          resultDirection = 'Háje';
+        } else if (
+          (selectedStation === 'Vyšehrad' ||
+            selectedStation === 'Pražského povstání' ||
+            selectedStation === 'Pankrác' ||
+            selectedStation === 'Budějovická' ||
+            selectedStation === 'Kačerov' ||
+            selectedStation === 'Roztyly' ||
+            selectedStation === 'Chodov' ||
+            selectedStation === 'Opatov' ||
+            selectedStation === 'Háje') &&
+          (selector2 === LineA || selector2 === LineB)
+        ) {
+          resultDirection = 'Letňany';
+        } else if (
+          (selectedStation === 'Zličín' ||
+            selectedStation === 'Stodůlky' ||
+            selectedStation === 'Luka' ||
+            selectedStation === 'Lužiny' ||
+            selectedStation === 'Hůrka' ||
+            selectedStation === 'Nové Butovice' ||
+            selectedStation === 'Jinonice' ||
+            selectedStation === 'Radlická' ||
+            selectedStation === 'Smíchovské nádraží' ||
+            selectedStation === 'Anděl' ||
+            selectedStation === 'Karlovo náměstí' ||
+            selectedStation === 'Národní třída') &&
+          (selector2 === LineA || selector2 === LineC)
+        ) {
+          resultDirection = 'Černý Most';
+          console.log('it is what it is');
+        } else if (
+          (selectedStation === 'Křižíkova' ||
+            selectedStation === 'Invalidovna' ||
+            selectedStation === 'Palmovka' ||
+            selectedStation === 'Českomoravská' ||
+            selectedStation === 'Vysočanská' ||
+            selectedStation === 'Kolbenova' ||
+            selectedStation === 'Hloubětín' ||
+            selectedStation === 'Rajská zahrada' ||
+            selectedStation === 'Černý Most') &&
+          (selector2 === LineA || selector2 === LineC)
+        ) {
+          resultDirection = 'Zličín';
+        } else if (
+          (selectedStation === 'Depo Hostivař' ||
+            selectedStation === 'Skalka' ||
+            selectedStation === 'Želivského' ||
+            selectedStation === 'Flora ' ||
+            selectedStation === 'Jiřího z Poděbrad' ||
+            selectedStation === 'Náměstí Míru' ||
+            selectedStation === 'Strašnická') &&
+          (selector2 === LineB || selector2 === LineC)
+        ) {
+          resultDirection = 'Nemocnice Motol';
+        } else if (
+          (selectedStation === 'Nemocnice Motol' ||
+            selectedStation === 'Petřiny ' ||
+            selectedStation === 'Bořislavka' ||
+            selectedStation === 'Dejvická' ||
+            selectedStation === 'Hradčanská ' ||
+            selectedStation === 'Malostranská' ||
+            selectedStation === 'Staroměstská ' ||
+            selectedStation === ' Nádraží Veleslavín') &&
+          (selector2 === LineB || selector2 === LineC)
+        ) {
+          resultDirection = 'Depo Hostivař';
+        } else {
+          if (selectedStation === 'Náměstí Republiky' && selector2 === LineA) {
+            resultDirection = 'Zličín';
+          } else if (
+            selectedStation === 'Náměstí Republiky' &&
+            selector2 === LineC
+          ) {
+            resultDirection = 'Černý Most';
+          } else if (
+            selectedStation === 'Hlavní nádraží' &&
+            selector2 === LineB
+          ) {
+            resultDirection = 'Letňany';
+          } else if (
+            selectedStation === 'Hlavní nádraží' &&
+            selector2 === LineA
+          ) {
+            resultDirection = 'Háje';
+          } else if (selectedStation === 'Můstek') {
+            console.log('xxx');
+          } else if (selectedStation === 'Muzeum') {
+            console.log('xxx');
+          } else if (selectedStation === 'Florenc') {
+            console.log('xxx');
+          }
+        }
+      }
     }
-    else {
-      if (selectedStation === "Náměstí Republiky" && selector2 === LineA){ 
-        resultDirection = "Zličín"
+    return resultDirection;
+  }
 
-    }else if (selectedStation === "Náměstí Republiky" && selector2 === LineC){
-      resultDirection = "Černý Most"
-    
-    }else if (selectedStation === "Hlavní nádraží" && selector2 === LineB){
-      resultDirection = "Letňany"
-
-    }else if (selectedStation === "Hlavní nádraží" && selector2 === LineA){
-      resultDirection = "Háje"
-    
-
-    } else if (selectedStation === "Můstek") {
-      console.log("xxx")
-    
-    }else if (selectedStation === "Muzeum"){
-      console.log("xxx")
-   
-    }else if(selectedStation === "Florenc"){
-      console.log("xxx")
+  function filterFunction1() {
+    var input, filter, option, i;
+    input = document.getElementById('myInput1');
+    filter = input.value.toUpperCase();
+    option = document.getElementsByClassName('option-dropdown1');
+    for (i = 0; i < option.length; i++) {
+      if (option[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+        option[i].style.display = '';
+      } else {
+        option[i].style.display = 'none';
+      }
     }
-}}
-}return resultDirection;
-}
+  }
 
+  function filterFunction2() {
+    var input, filter, option, i;
+    input = document.getElementById('myInput2');
+    filter = input.value.toUpperCase();
+    option = document.getElementsByClassName('option-dropdown2');
+    for (i = 0; i < option.length; i++) {
+      if (option[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+        option[i].style.display = '';
+      } else {
+        option[i].style.display = 'none';
+      }
+    }
+  }
 
-
-
-
- function filterFunction1() {
-     var input, filter, option, i;
-     input = document.getElementById("myInput1");
-     filter = input.value.toUpperCase();
-     option = document.getElementsByClassName("option-dropdown1");
-     for (i = 0; i < option.length; i++) {
-         if (option[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
-             option[i].style.display = "";
-         } else {
-             option[i].style.display = "none";
-         }
-     } 
- }
- 
- function filterFunction2() {
-     var input, filter, option, i;
-     input = document.getElementById("myInput2");
-     filter = input.value.toUpperCase();
-     option = document.getElementsByClassName("option-dropdown2");
-     for (i = 0; i < option.length; i++) {
-         if (option[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
-             option[i].style.display = "";
-         } else {
-             option[i].style.display = "none";
-         }
-     }
- }
- 
- 
- 
- 
- 
- /*
+  /*
   const input = document.getElementById("search-input");
  const suggestions = document.getElementById("suggestions");
  const specificValues = ['suggestion 1', 'suggestion 2', 'suggestion 3'];
@@ -564,45 +1002,40 @@ else {
    }
  });
  */
- 
- 
- async function displayCzechTime() {
-   // Get the current date and time
-   var currentTime = new Date();
-   
-   // Set the time zone to Central European Time (CET)
-   currentTime.setTime(currentTime.getTime());
-  
- 
-   
-   // Get the hours, minutes, and seconds from the current time
-   var hours = currentTime.getHours();
-   var minutes = currentTime.getMinutes();
-   var seconds = currentTime.getSeconds();
-   
-   // Add a leading zero to the hours, minutes, and seconds if they are less than 10
-   if (hours < 10) {
-     hours = "0" + hours;
-   }
-   if (minutes < 10) {
-     minutes = "0" + minutes;
-   }
-   if (seconds < 10) {
-     seconds = "0" + seconds;
-   }
-   
-   // Concatenate the hours, minutes, and seconds into a single string and display it
-   var timeString = hours + ":" + minutes + ":" + seconds;
-   //console.log(timeString);
- 
- 
- document.getElementById('itIsCurrently').innerHTML = timeString 
- }
- 
- setInterval(displayCzechTime, 1000);
- 
- 
- /*
+
+  async function displayCzechTime() {
+    // Get the current date and time
+    var currentTime = new Date();
+
+    // Set the time zone to Central European Time (CET)
+    currentTime.setTime(currentTime.getTime());
+
+    // Get the hours, minutes, and seconds from the current time
+    var hours = currentTime.getHours();
+    var minutes = currentTime.getMinutes();
+    var seconds = currentTime.getSeconds();
+
+    // Add a leading zero to the hours, minutes, and seconds if they are less than 10
+    if (hours < 10) {
+      hours = '0' + hours;
+    }
+    if (minutes < 10) {
+      minutes = '0' + minutes;
+    }
+    if (seconds < 10) {
+      seconds = '0' + seconds;
+    }
+
+    // Concatenate the hours, minutes, and seconds into a single string and display it
+    var timeString = hours + ':' + minutes + ':' + seconds;
+    //console.log(timeString);
+
+    document.getElementById('itIsCurrently').innerHTML = timeString;
+  }
+
+  setInterval(displayCzechTime, 1000);
+
+  /*
  async function getTimeMain(station, direction) {
    const params = new URLSearchParams();
    params.set('names', station);
@@ -623,7 +1056,7 @@ else {
  getTimeMain("Luka","Černý Most");
  
  */
- /*
+  /*
  document.getElementById("counter").onclick = function() {countDown()};
    
    function countDown() {
@@ -649,8 +1082,8 @@ else {
    
    };
  */
- 
- /* GAME PLAN
+
+  /* GAME PLAN
  
    Better the UI
  
@@ -672,138 +1105,145 @@ else {
    Launch
  
  */
-   </script>
- 
- 
- <style>
- #myDropdown1 {
-     display: none;
- }
- 
- #myInput1 {
-   display: block;
-   box-sizing: border-box;
-   background-position: 14px 12px;
-   background-repeat: no-repeat;
-   font-size: 16px;
-   padding: 14px 20px 12px 45px;
-   border: none;
-   border-bottom: 1px solid #ddd;
- }
- 
- #myInput1:focus {outline: 3px solid #ddd;}
- 
- .dropdown1 {
-   position: relative;
-   display: inline-block;
- }
- 
- .dropdown-content1 {
-   display: none;
-   position: absolute;
-   background-color: #f6f6f6;
-   min-width: 230px;
-   overflow: auto;
-   border: 1px solid #ddd;
-   z-index: 1;
- }
- 
- .dropdown-content1 option {
-   color: black;
-   padding: 12px 16px;
-   text-decoration: none;
-   display: block;
- }
- 
- .dropdown1 option:hover {background-color: #ddd;}
- 
- #myDropdown2 {
-     display: none;
- }
- 
- #myInput2 {
-   display: block;
-   box-sizing: border-box;
-   background-position: 14px 12px;
-   background-repeat: no-repeat;
-   font-size: 16px;
-   padding: 14px 20px 12px 45px;
-   border: none;
-   border-bottom: 1px solid #ddd;
- }
- 
- #myInput2:focus {outline: 3px solid #ddd;}
- 
- .dropdown2 {
-   position: relative;
-   display: inline-block;
- }
- 
- .dropdown-content2 {
-   display: none;
-   position: absolute;
-   background-color: #f6f6f6;
-   min-width: 230px;
-   overflow: auto;
-   border: 1px solid #ddd;
-   z-index: 1;
- }
- 
- .dropdown-content2 option {
-   color: black;
-   padding: 12px 16px;
-   text-decoration: none;
-   display: block;
- }
- 
- .dropdown2 option:hover {background-color: #ddd;}
- 
- 
- .show {display: block;}
-   .counter {
-     
-   }
- 
-   main {
-     margin: auto;
-     padding: 1.5rem;
-     max-width: 60ch;
-   }
-   h1 {
-     font-size: 2rem;
-     font-weight: 800;
-     margin: 0;
-   }
-   .text-gradient {
-     background-image: var(--accent-gradient);
-     -webkit-background-clip: text;
-     -webkit-text-fill-color: transparent;
-     background-size: 400%;
-     background-position: 0%;
-   }
-   .instructions {
-     line-height: 1.6;
-     margin: 1rem 0;
-     border: 1px solid rgba(var(--accent), 25%);
-     background-color: white;
-     padding: 1rem;
-     border-radius: 0.4rem;
-   }
-   .instructions code {
-     font-size: 0.875em;
-     font-weight: bold;
-     background: rgba(var(--accent), 12%);
-     color: rgb(var(--accent));
-     border-radius: 4px;
-     padding: 0.3em 0.45em;
-   }
-   .instructions strong {
-     color: rgb(var(--accent));
-   }
-   .link-card-grid {
-     display: grid;
-     grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-     gap: 1rem;
-     padding: 0;
-   }
- </style>
+</script>
+
+<style>
+  #myDropdown1 {
+    display: none;
+  }
+
+  #myInput1 {
+    display: block;
+    box-sizing: border-box;
+    background-position: 14px 12px;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    padding: 14px 20px 12px 45px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+  }
+
+  #myInput1:focus {
+    outline: 3px solid #ddd;
+  }
+
+  .dropdown1 {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-content1 {
+    display: none;
+    position: absolute;
+    background-color: #f6f6f6;
+    min-width: 230px;
+    overflow: auto;
+    border: 1px solid #ddd;
+    z-index: 1;
+  }
+
+  .dropdown-content1 option {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown1 option:hover {
+    background-color: #ddd;
+  }
+
+  #myDropdown2 {
+    display: none;
+  }
+
+  #myInput2 {
+    display: block;
+    box-sizing: border-box;
+    background-position: 14px 12px;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    padding: 14px 20px 12px 45px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+  }
+
+  #myInput2:focus {
+    outline: 3px solid #ddd;
+  }
+
+  .dropdown2 {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-content2 {
+    display: none;
+    position: absolute;
+    background-color: #f6f6f6;
+    min-width: 230px;
+    overflow: auto;
+    border: 1px solid #ddd;
+    z-index: 1;
+  }
+
+  .dropdown-content2 option {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown2 option:hover {
+    background-color: #ddd;
+  }
+
+  .show {
+    display: block;
+  }
+  .counter {
+  }
+
+  main {
+    margin: auto;
+    padding: 1.5rem;
+    max-width: 60ch;
+  }
+  h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 0;
+  }
+  .text-gradient {
+    background-image: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400%;
+    background-position: 0%;
+  }
+  .instructions {
+    line-height: 1.6;
+    margin: 1rem 0;
+    border: 1px solid rgba(var(--accent), 25%);
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.4rem;
+  }
+  .instructions code {
+    font-size: 0.875em;
+    font-weight: bold;
+    background: rgba(var(--accent), 12%);
+    color: rgb(var(--accent));
+    border-radius: 4px;
+    padding: 0.3em 0.45em;
+  }
+  .instructions strong {
+    color: rgb(var(--accent));
+  }
+  .link-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+    gap: 1rem;
+    padding: 0;
+  }
+</style>

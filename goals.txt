@@ -1,0 +1,5 @@
+Favorites:
+
+how to add to favorites.FIgure out the adding, + history and favorites. 
+
+Storing favorites in PWA. Check out indexedDB API and Cache API. 
